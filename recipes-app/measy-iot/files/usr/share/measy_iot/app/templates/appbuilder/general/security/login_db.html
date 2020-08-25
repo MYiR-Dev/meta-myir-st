@@ -1,0 +1,118 @@
+<!-- extend base layout -->
+{% extends "appbuilder/base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div id="loginbox" style="margin-top:50px;" class="row justify-content-center">
+    <div class="col-md-8">
+          <div class="card-group">
+            <div class="card p-4">
+              <div class="card-body">
+                  <form class="form" action="" method="post" name="login">
+                      {{form.hidden_tag()}}
+                <h1>{{ title }}</h1>
+                <p class="text-muted">{{_("Enter your login and password below")}}:</p>
+                <div class="input-group mb-3 {% if form.errors.openid %} error{% endif %}" >
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="icon-user"></i>
+                    </span>
+                  </div>
+{#                  <input class="form-control" type="text" placeholder="{{_("Username")}}">#}
+                  {{ form.username(size = 80, class = "form-control",type="text", placeholder=_("Username")) }}
+                             {% for error in form.errors.openid %}
+                            <span class="help-inline">[{{error}}]</span><br>
+                            {% endfor %}
+                </div>
+                <div class="input-group mb-4">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="icon-lock"></i>
+                    </span>
+                  </div>
+{#                  <input class="form-control" type="password" placeholder="{{_("Password")}}">#}
+                   {{ form.password(size = 80, class = "form-control", type="password", placeholder=_("Password") ) }}
+                    {% for error in form.errors.openid %}
+                            <span class="help-inline">[{{error}}]</span><br>
+                            {% endfor %}
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    <button class="btn btn-primary px-4"  type="submit">{{_('Sign In')}}</button>
+                  </div>
+                  <div class="col-6 text-right">
+                    <button class="btn btn-link px-0" type="button">{{_('Forgot password')}}?</button>
+                  </div>
+                </div>
+                  </form>
+              </div>
+            </div>
+{#          {% if appbuilder.sm.auth_user_registration %}#}
+            <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
+              <div class="card-body text-center">
+                <div>
+                  <h2>{{ _("Tips") }}!</h2>
+                  <p></p>
+                  <p class="text-left" style="padding-left: 50px">{{ _("Demo User") }}: admin</p>
+                  <p class="text-left" style="padding-left: 50px">{{ _("Demo Password") }}: admin</p>
+{#                  <button class="btn btn-primary active mt-3" type="button">Register Now!</button>#}
+                </div>
+              </div>
+            </div>
+{#          {% endif %}#}
+          </div>
+        </div>
+{#        <div class="panel panel-primary" >#}
+{#            <div class="panel-heading">#}
+{#                <div class="panel-title">{{ title }}</div>#}
+{#            </div>#}
+{#            <div style="padding-top:30px" class="panel-body" >#}
+{##}
+{#                <form class="form" action="" method="post" name="login">#}
+{#                    {{form.hidden_tag()}}#}
+{#                    <div class="help-block">{{_("Enter your login and password below")}}:</div>#}
+{#                    <div class="control-group{% if form.errors.openid %} error{% endif %}">#}
+{#                        <label class="control-label" for="openid">{{_("Username")}}:</label>#}
+{##}
+{#                        <div class="controls">#}
+{#                            <div class="input-group">#}
+{#                                <span class="input-group-addon"><i class="fa fa-user"></i></span>#}
+{#                                {{ form.username(size = 80, class = "form-control") }}#}
+{#                            </div>#}
+{#                            {% for error in form.errors.openid %}#}
+{#                            <span class="help-inline">[{{error}}]</span><br>#}
+{#                            {% endfor %}#}
+{#                            <label class="control-label" for="openid">{{_("Password")}}:</label>#}
+{##}
+{#                            <div class="input-group">#}
+{#                                <span class="input-group-addon"><i class="fa fa-key"></i></span>#}
+{#                                {{ form.password(size = 80, class = "form-control") }}#}
+{#                            </div>#}
+{#                            {% for error in form.errors.openid %}#}
+{#                            <span class="help-inline">[{{error}}]</span><br>#}
+{#                            {% endfor %}#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="control-group">#}
+{#                        <div class="controls">#}
+{#                            <br>#}
+{#                            <div>#}
+{#                                <input class="btn btn-primary btn-block" type="submit" value="{{_('Sign In')}}">#}
+{#                                {% if appbuilder.sm.auth_user_registration %}#}
+{#                                <a href="{{appbuilder.sm.get_url_for_registeruser}}" class="btn btn-block btn-primary" data-toggle="tooltip" rel="tooltip"#}
+{#                                title="{{_('If you are not already a user, please register')}}">#}
+{#                                    {{_('Register')}}#}
+{#                                </a>#}
+{#                                {% endif %}#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </form>#}
+{##}
+{#            </div>#}
+{#        </div>#}
+    </div>
+</div>
+{% endblock %}

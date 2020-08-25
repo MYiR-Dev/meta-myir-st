@@ -1,0 +1,209 @@
+{% extends "appbuilder/base.html" %}
+{% block page_title %}{{_("System Upgrade")}}{% endblock %}
+{% block breadcrumb %}
+ <!-- Breadcrumb-->
+<ol class="breadcrumb" style="margin-bottom:1px; padding: 0.25rem">
+          <li class="breadcrumb-item"><a href="/"><i class="fa fa-home"></i> {{_("Home")}}</a></li>
+          <li class="breadcrumb-item">
+            <a href="#">{{_("System")}}</a>
+          </li>
+          <li class="breadcrumb-item active">{{_("System Upgrade")}}</li>
+          <!-- Breadcrumb Menu-->
+{#          <li class="breadcrumb-menu d-md-down-none">#}
+{#            <div class="btn-group" role="group" aria-label="Button group">#}
+{#              <a class="btn" href="#">#}
+{#                <i class="icon-speech"></i>#}
+{#              </a>#}
+{#              <a class="btn" href="..">#}
+{#                <i class="icon-graph"></i>  Dashboard</a>#}
+{#              <a class="btn" href="#">#}
+{#                <i class="icon-settings"></i>  Settings</a>#}
+{#            </div>#}
+{#          </li>#}
+        </ol>
+{% endblock %}
+{% block content %}
+<!-- /.row -->
+{#<div class="row">#}
+{#    <!-- /.col-lg-8 -->#}
+{#    <div class="col-lg-12" >#}
+{##}
+{#        <!-- /.panel -->#}
+{##}
+{#        <!-- /.panel -->#}
+{#        <div class="panel panel-default">#}
+{#            <div class="panel-heading">#}
+{#                <i class="fa fa-list fa-fw"></i> 硬件信息#}
+{#            </div>#}
+{#            <!-- /.panel-heading -->#}
+{#             <div class="panel-body">#}
+{#                <div class="row">#}
+{#                    <div class="col-xs-2  text-right">#}
+{#                        <h6>制造商:</h6>#}
+{#                    </div>#}
+{#                    <div class="col-xs-10 text-left">#}
+{#                        <ul class="chat">#}
+{#                        <li class="right ">#}
+{#                        <div class="chat-body">#}
+{#                            <h6 class="small text-muted">MYIR Electronics Limited</h6>#}
+{#                        </div>#}
+{#                        </li>#}
+{#                        </ul>#}
+{#                    </div>#}
+{#                  </div>#}
+{#                <div class="row">#}
+{#                    <div class="col-xs-2   text-right">#}
+{#                        <h6>型号:</h6>#}
+{#                    </div>#}
+{#                    <div class="col-xs-10 text-left">#}
+{#                        <ul class="chat">#}
+{#                        <li class="right ">#}
+{#                        <div class="chat-body ">#}
+{#                            <h6 class="small text-muted">MYD-C335X-GW</h6>#}
+{#                        </div>#}
+{#                        </li>#}
+{#                        </ul>#}
+{#                    </div>#}
+{#                  </div>#}
+{#                <div class="row">#}
+{#                    <div class="col-xs-2   text-right">#}
+{#                        <h6>处理器:</h6>#}
+{#                    </div>#}
+{#                    <div class="col-xs-10 text-left">#}
+{#                        <ul class="chat">#}
+{#                        <li class="right ">#}
+{#                        <div class="chat-body ">#}
+{#                            <h6 class="small text-muted">TI AM335X</h6>#}
+{#                        </div>#}
+{#                        </li>#}
+{#                        </ul>#}
+{#                    </div>#}
+{#                  </div>#}
+{#                <div class="row">#}
+{#                    <div class="col-xs-2  text-right">#}
+{#                        <h6>内存:</h6>#}
+{#                    </div>#}
+{#                    <div class="col-xs-10 text-left">#}
+{#                        <ul class="chat">#}
+{#                        <li class="right ">#}
+{#                        <div class="chat-body ">#}
+{#                            <h6 class="small text-muted">256MB</h6>#}
+{#                        </div>#}
+{#                        </li>#}
+{#                        </ul>#}
+{#                    </div>#}
+{#                  </div>#}
+{#                <div class="row">#}
+{#                    <div class="col-xs-2  text-right">#}
+{#                        <h6>存储空间:</h6>#}
+{#                    </div>#}
+{#                    <div class="col-xs-4 text-left">#}
+{#                        <ul class="chat">#}
+{#                        <li class="right ">#}
+{##}
+{#                        <div class="chat-body ">#}
+{#                            <h6 class="small  text-muted">256MB</h6>#}
+{#                        </div>#}
+{##}
+{#                        </li>#}
+{#                        </ul>#}
+{#                    </div>#}
+{#                  </div>#}
+{#                  <div>#}
+{#                    <span class="chat-img pull-right">#}
+{#                          <img src="{{ url_for('serveStaticResource', filename='img/logo_myir.png')  }}" alt="User Avatar" class="" />#}
+{#                    </span>#}
+{#                  </div>#}
+{#            </div>#}
+{#            <!-- /.panel-footer -->#}
+{#        </div>#}
+{#    </div>#}
+{#    <!-- /.col-lg-4 -->#}
+{#</div>#}
+<!-- /.row -->
+{#<div class="row">#}
+{#    <!-- /.col-lg-8 -->#}
+{#    <div class="col-lg-12">#}
+{##}
+{#        <!-- /.panel -->#}
+{##}
+{#        <!-- /.panel -->#}
+{#        <div class="panel panel-default">#}
+{#            <div class="panel-heading">#}
+{#                <i class="fa fa-list fa-fw"></i> 软件信息#}
+{#            </div>#}
+{#            <!-- /.panel-heading -->#}
+{#            <div class="panel-body">#}
+{#                <div class="row">#}
+{#                    <div class="col-xs-2  text-right">#}
+{#                        <h6>GateWay版本:</h6>#}
+{#                    </div>#}
+{#                    <div class="col-xs-10 text-left">#}
+{#                        <ul class="chat">#}
+{#                        <li class="right ">#}
+{#                        <div class="chat-body ">#}
+{#                            <h6 class="small text-muted">MEasy Gateway V1.0</h6>#}
+{#                        </div>#}
+{#                        </li>#}
+{#                        </ul>#}
+{#                    </div>#}
+{#                  </div>#}
+{#                <div class="row">#}
+{#                    <div class="col-xs-2   text-right">#}
+{#                        <h6>Linux内核版本:</h6>#}
+{#                    </div>#}
+{#                    <div class="col-xs-10 text-left">#}
+{#                        <ul class="chat">#}
+{#                        <li class="right ">#}
+{#                        <div class="chat-body ">#}
+{#                            <h6 class="small text-muted">Kernel 4.14.67</h6>#}
+{#                        </div>#}
+{#                        </li>#}
+{#                        </ul>#}
+{#                    </div>#}
+{#                  </div>#}
+{#                <div class="row">#}
+{#                    <div class="col-xs-2 text-right">#}
+{#                        <h6>Bootloader版本:</h6>#}
+{#                    </div>#}
+{#                    <div class="col-xs-10 text-left">#}
+{#                        <ul class="chat">#}
+{#                        <li class="right ">#}
+{#                        <div class="chat-body ">#}
+{#                            <h6 class="small text-muted">U-boot 201802</h6>#}
+{#                        </div>#}
+{#                        </li>#}
+{#                        </ul>#}
+{#                    </div>#}
+{#                  </div>#}
+{#                <div class="row">#}
+{#                    <div class="col-xs-2  text-right">#}
+{#                        <h6>编译器版本:</h6>#}
+{#                    </div>#}
+{#                    <div class="col-xs-4 text-left">#}
+{#                        <ul class="chat">#}
+{#                        <li class="right ">#}
+{##}
+{#                        <div class="chat-body ">#}
+{#                            <h6 class="small text-muted">MEasy Gateway V1.0</h6>#}
+{#                        </div>#}
+{##}
+{#                        </li>#}
+{#                        </ul>#}
+{#                    </div>#}
+{#                  </div>#}
+{#                  <div>#}
+{#                    <span class="chat-img pull-right">#}
+{#                <img src="{{ url_for('serveStaticResource', filename='img/logo_linux.jpg')  }}" alt="User Avatar" class="img-circle" />#}
+{#                    </span>#}
+{#                  </div>#}
+{#            </div>#}
+{##}
+{#            <!-- /.panel-body -->#}
+{#            <!-- /.panel-footer -->#}
+{#        </div>#}
+{#        <!-- /.panel .chat-panel -->#}
+{#    </div>#}
+{#    <!-- /.col-lg-4 -->#}
+{#</div>#}
+{% endblock %}

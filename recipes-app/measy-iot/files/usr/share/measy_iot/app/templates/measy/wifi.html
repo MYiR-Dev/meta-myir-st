@@ -1,0 +1,348 @@
+{% extends "appbuilder/base.html" %}
+{% block page_title %}{{_("WiFi Settings")}}{% endblock %}
+{% block breadcrumb %}
+ <!-- Breadcrumb-->
+<ol class="breadcrumb" style="margin-bottom:1px; padding: 0.25rem">
+          <li class="breadcrumb-item"><a href="/"><i class="fa fa-home"></i> {{_("Home")}}</a></li>
+          <li class="breadcrumb-item">
+            <a href="#">{{_("Settings")}}</a>
+          </li>
+          <li class="breadcrumb-item active">{{_("WiFi Settings")}}</li>
+          <!-- Breadcrumb Menu-->
+{#          <li class="breadcrumb-menu d-md-down-none">#}
+{#            <div class="btn-group" role="group" aria-label="Button group">#}
+{#              <a class="btn" href="#">#}
+{#                <i class="icon-speech"></i>#}
+{#              </a>#}
+{#              <a class="btn" href="..">#}
+{#                <i class="icon-graph"></i>  Dashboard</a>#}
+{#              <a class="btn" href="#">#}
+{#                <i class="icon-settings"></i>  Settings</a>#}
+{#            </div>#}
+{#          </li>#}
+        </ol>
+{% endblock %}
+{% block content %}
+   <div class="row">
+            <div class="col-md-12">
+                <!-- BEGIN PORTLET-->
+                <div class="card portlet light form-fit">
+                    <div class="card-header portlet-title">
+{#                                        <div class="caption">#}
+                            <i class="fa fa-power-off  font-red"></i> {{ _("WiFi Switch") }}
+{#                                        </div>#}
+                        <div class="card-header-actions">
+{#                                            <input type="checkbox" class="make-switch" checked data-on="success" data-on-color="success" data-off-color="warning" data-size="small"> </div>#}
+                              <label class="switch switch-label switch-pill switch-primary" style="margin: 0">
+                                <input class="switch-input" id="wifi-switch" type="checkbox" />
+                                <span class="switch-slider" data-checked="{{ _("On") }}" data-unchecked="{{ _("Off") }}"></span>
+                              </label>
+                        </div>
+
+                </div>
+                <!-- END PORTLET-->
+            </div>
+        </div>
+    </div>
+   <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN PORTLET-->
+            <div class="card portlet light form-fit">
+                <div class="card-header portlet-title">
+{#                                        <div class="caption">#}
+                        <i class="icon-share font-dark hide"></i>
+                        <span class="caption-subject font-dark bold uppercase">{{ _("Available WiFi List.") }}</span>
+{#                                            <span class="caption-helper">显示发现的WIFI信息...</span>#}
+{#                                        </div>#}
+                    <div class="card-header-actions">
+                        <div class="button">
+
+                            <button class="button" id="wifi-scan" href="javascript:;" target="_top"><i class="fa fa-search text-primary"> {{_("SCAN") }}</i> </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body" id="spy-example2" data-spy="scroll" data-target="#list-example" data-offset="0" style="height: 400px; padding-left:1px; padding-right:1px; padding-top: 2px; overflow: auto">
+                            <!-- START WIFI LIST -->
+                            <ul class="list-group" id="wifi-list-group">
+
+                            </ul>
+                            <!-- END WIFI LIST -->
+                    </div>
+                <div class="card-footer">
+{#                        <div class="btn-arrow-link pull-right">#}
+{#                            <a href="javascript:;">{{ _("See All") }}#}
+{#                            <i class="icon-arrow-right"></i></a>#}
+{#                        </div>#}
+                </div>
+                <div aria-labelledby="myModalLabel" class="modal fade bs-example-modal-lg" id="connection" role="dialog" >
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="wifi_essid_lable">
+                                 "wifi密碼"
+                                </h4>
+    
+                                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                                    <span aria-hidden="true">
+                                        ×
+                                    </span>
+                                </button>
+
+                            </div>
+                            <div class="modal-body" id="modalBody">
+                                        <div class="hidden" style="display:none;">
+                                            <p  type="hidden" id="wifi_encryption"> "test"</p>
+                                        </div>
+
+                                        <div class="form-group  row">
+                                            <label class="col-form-label col-md-2" for="text-input" style="text-align: left"  ><h6>{{ _("Wifi Passwd") }}:</h6></label>
+                                            <div class="col-md-10">
+{#                                                <input type="password" name="" class="form-control" id="wifi_passwd" ></input>#}
+                                                <dd class="password">
+                                                    <input name="" type="password" class="form-control"  id="wifi_passwd">
+                                                    <i class="fa fa-eye-slash"></i>
+                                                    </input>
+                                                </dd>
+                                            </div>
+                                        </div>
+
+                                        <div class="pull-right">
+                                        <button type="button" name="" id="finishISBN" class="btn btn-primary"  onclick="connect_wifi()">{{ _("Ok") }}</button>
+                                        <button type="button" name="" id="finishISBN" class="btn btn-primary" data-dismiss="modal"  >{{ _("Cancle") }}</button>
+                                        </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </div>
+{% endblock %}
+{% block add_tail_js %}
+    {{ super() }}
+{#    <script src="{{ url_for('serveStaticResource', filename='vendors/jquery-validation/js/jquery.validate.js')}}" type="text/javascript"></script>#}
+{#    <script src="{{ url_for('serveStaticResource', filename='js/measy/mqtt.js')}}" type="text/javascript"></script>#}
+    <script type="text/javascript" charset="utf-8">
+
+
+    function toUnicodeFun(data){
+      if(data == '' || typeof data == 'undefined') return false;
+       var str ='';
+       for(var i=0;i<data.length;i++){
+          str+="\\u"+data.charCodeAt(i).toString(16);
+       }
+       return str;
+    }
+
+
+    function sortId(a,b){
+        return b.Quality-a.Quality
+    }
+    function create_element(fragment, n) {
+        var doc = document,
+            wifi_li = doc.createElement("li"),
+
+            div_wifi_info = doc.createElement("div"),
+            span_wifi_icon = doc.createElement("span"),
+            i_wifi_icon = doc.createElement("i"),
+            span_wifi_essid = doc.createElement("span"),
+            b_wifi_essid = doc.createElement("b"),
+            span_wifi_encryption = doc.createElement("span"),
+            i_wifi_encryption = doc.createElement("i"),
+            span_encrytion_icon = doc.createElement("span"),
+            i_encryption_icon = doc.createElement("i"),
+
+            div_wifi_control = doc.createElement("div"),
+            span_wifi_control = doc.createElement("span"),
+            a_wifi_connect = doc.createElement("a"),
+            a_wifi_disconnect = doc.createElement("a");
+
+            wifi_li.setAttribute("class", "list-group-item d-flex list-group-item-action justify-content-between align-items-center");
+
+            div_wifi_info.setAttribute("class","row");
+            span_wifi_icon.setAttribute("class","text-primary");
+            span_wifi_icon.setAttribute("style","padding-left:10px; padding-right: 10px");
+            i_wifi_icon.setAttribute("class","fa fa-wifi");
+
+            span_wifi_essid.setAttribute("class","text-primary");
+            span_wifi_essid.setAttribute("style","padding-left:10px; padding-right: 0px");
+            span_wifi_essid.setAttribute("id","essid");
+            var essid;
+            {#if(isChinese(n.Name))#}
+            {#    essid = toUnicodeFun(n.Name);#}
+            {#else#}
+
+                essid =  n.Name;
+            b_wifi_essid.innerText = essid;
+
+            span_wifi_encryption.setAttribute("class","text-primary");
+            span_wifi_encryption.setAttribute("style","padding-left:10px; padding-right: 0px");
+            span_wifi_essid.setAttribute("id","encryption");
+            n.Encryption.padStart("(");
+            n.Encryption.padEnd(")");
+            i_wifi_encryption.innerText = n.Encryption;
+
+            span_encrytion_icon.setAttribute("class","text-primary");
+            span_encrytion_icon.setAttribute("style","padding-left:10px; padding-right: 0px");
+            if(n.Encryption === "Open")
+                i_encryption_icon.setAttribute("class","fa fa-unlock");
+            else
+                i_encryption_icon.setAttribute("class","fa fa-lock");
+
+            span_wifi_control.setAttribute("class","menu text-right");
+            span_wifi_control.setAttribute("style","padding-left:50px; padding-right: 0px");
+            a_wifi_connect.setAttribute("class","fa fa-link");
+            a_wifi_connect.setAttribute("style","padding-left:10px; padding-right: 10px");
+            a_wifi_connect.setAttribute("href","#");
+            a_wifi_connect.innerText="{{ _("CONNECT") }}";
+
+            a_wifi_disconnect.setAttribute("class","fa fa-unlink");
+            a_wifi_disconnect.setAttribute("style","padding-left:10px; padding-right: 10px");
+            a_wifi_disconnect.setAttribute("href","#");
+            a_wifi_disconnect.innerText="{{ _("DISCONNECT") }}";
+
+            <!--appendChild start-->
+            span_wifi_icon.appendChild(i_wifi_icon);
+            span_wifi_essid.appendChild(b_wifi_essid);
+            span_wifi_encryption.appendChild(i_wifi_encryption);
+            span_encrytion_icon.appendChild(i_encryption_icon);
+            div_wifi_info.appendChild(span_wifi_icon);
+            div_wifi_info.appendChild(span_wifi_essid);
+            div_wifi_info.appendChild(span_wifi_encryption);
+            div_wifi_info.appendChild(span_encrytion_icon);
+
+            span_wifi_control.appendChild(a_wifi_connect);
+            span_wifi_control.appendChild(a_wifi_disconnect);
+            div_wifi_control.appendChild(span_wifi_control);
+
+            wifi_li.appendChild(div_wifi_info);
+            wifi_li.appendChild(div_wifi_control);
+            <!--appendChild end-->
+
+            fragment.appendChild(wifi_li);
+    }
+    function update_wifi_element(wifi_list_data){
+
+        wifi_list_data.sort(sortId);
+        var doc = document,
+        fragment = doc.createDocumentFragment(),
+        container = doc.getElementById("wifi-list-group");
+        while(container.hasChildNodes()){
+            container.removeChild(container.firstChild);
+        }
+        for(var i in wifi_list_data){
+
+             {#console.log(wifi_list_data[i].Name);#}
+             if(wifi_list_data[i].Name.indexOf("\\x") != -1)
+                 continue
+             create_element(fragment,wifi_list_data[i]);
+         }
+         {#console.log(fragment);#}
+        container.appendChild(fragment);
+
+    }
+    function connect_wifi(){
+
+       {#console.log($("#wifi_passwd").val());#}
+       {#console.log($("#wifi_essid_lable").text());#}
+       {#console.log($("#wifi_encryption").text());#}
+       if ($("#wifi_encryption").text() !=="Open"){
+
+           if($("#wifi_passwd").val() == ""){
+                alert("Please input wifi passwd!");
+                return
+           }
+           if($("#wifi_passwd").val().length<8){
+                alert("Password length cannot be less than 8!");
+                return
+           }
+
+       }
+       var wifi_info = {"wifi_essid":$("#wifi_essid_lable").text(),"wifi_passwd":$("#wifi_passwd").val(),"wifi_encryption":$("#wifi_encryption").text()};
+       socket.emit("wifi_connect_info",wifi_info);
+    }
+
+    $(document).ready(function() {
+
+        socket.emit("get_wifi_statu",{data:"get_wifi_statu "});
+        $("#wifi-switch").click(function () {
+
+           if($("#wifi-switch").is(":checked")){
+               socket.emit("wifi_open",{data:"wifi_open click"});
+               {#socket.emit("wifi_scan",{data:"wifi_scan click"});#}
+           }
+           else
+           {
+                var doc = document;
+                container = doc.getElementById("wifi-list-group");
+                while(container.hasChildNodes()){
+                     {#console.log($("remove"));#}
+                    container.removeChild(container.firstChild);
+                }
+                socket.emit("wifi_close",{data:"wifi_close click"});
+           }
+        });
+        $("#wifi-scan").click(function () {
+
+           if($("#wifi-switch").is(":checked")) {
+               socket.emit("wifi_scan", {data: "wifi_scan click"});
+           }
+           else
+           {
+               alert("Please open wifi switch!");
+           }
+        });
+
+
+        $(".password").on("click", ".fa-eye-slash", function () {
+            $(this).removeClass("fa-eye-slash").addClass("fa-eye");
+            $(this).prev().attr("type", "text");
+        });
+
+        $(".password").on("click", ".fa-eye", function () {
+            $(this).removeClass("fa-eye").addClass("fa-eye-slash");
+            $(this).prev().attr("type", "password");
+        });
+
+        $("#wifi-list-group").on("click", "li .fa-link", function () {
+            {#console.log($(this).parents('li'));#}
+            {#console.log($(this).parents('li').find('div:first-child>span>b').text());#}
+            {#console.log($(this).parents('li').find('div:first-child>span>i').text());#}
+             $("#wifi_passwd").val("");
+            document.getElementById("wifi_essid_lable").innerText = $(this).parents('li').find('div:first-child>span>b').text();
+            document.getElementById("wifi_encryption").innerText = $(this).parents('li').find('div:first-child>span>i').text();
+            {#$("#wifi_encryption").html($(this).parents('li').find('div:first-child>span>i').text())#}
+            $("#connection").modal("show");
+            {#console.log($(this).closest('li')[0].innerText);#}
+
+        });
+        $("#wifi-list-group").on("click", "li .fa-unlink", function () {
+
+             {#$(this).closest('li').getElementById("essid").innerText;#}
+            socket.emit("wifi_disconnect",{data:"wifi_scan click"});
+        });
+        socket.on('wifi_list', function (res) {
+            update_wifi_element(res);
+        });
+        socket.on('wifi_status', function (wifi_status) {
+            if (wifi_status["switch"] == "on"){
+                $("#wifi-switch").prop("checked", true)
+                socket.emit("wifi_scan",{data:"wifi_status on"});
+            }
+            else{
+                $("#wifi-switch").prop("checked",false);
+            }
+
+        });
+        socket.on('wifi_badge_status', function (wifi_status) {
+                if(wifi_status["connect"] != "off/any"){
+                    console.log ($("#wifi_essid_lable").text() );
+                    console.log (wifi_status["connect"] );
+                   if($("#wifi_essid_lable").text() == wifi_status["connect"] )
+                       $("#connection").modal("hide");
+                }
+
+        });
+    });
+    </script>
+{% endblock %}

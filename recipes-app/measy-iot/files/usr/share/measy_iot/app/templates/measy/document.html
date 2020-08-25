@@ -1,0 +1,46 @@
+{% extends "appbuilder/base.html" %}
+{% block page_title %}{{_("Documents")}}{% endblock %}
+{% block breadcrumb %}
+ <!-- Breadcrumb-->
+<ol class="breadcrumb" style="margin-bottom:1px; padding: 0.25rem">
+          <li class="breadcrumb-item"><a href="/"><i class="fa fa-home"></i> {{_("Home")}}</a></li>
+          <li class="breadcrumb-item active">
+            <a href="#">{{_("Documents")}}</a>
+          </li>
+{#          <li class="breadcrumb-item active">Dashboard</li>#}
+          <!-- Breadcrumb Menu-->
+{#          <li class="breadcrumb-menu d-md-down-none">#}
+{#            <div class="btn-group" role="group" aria-label="Button group">#}
+{#              <a class="btn" href="#">#}
+{#                <i class="icon-speech"></i>#}
+{#              </a>#}
+{#              <a class="btn" href="..">#}
+{#                <i class="icon-graph"></i>  Dashboard</a>#}
+{#              <a class="btn" href="#">#}
+{#                <i class="icon-settings"></i>  Settings</a>#}
+{#            </div>#}
+{#          </li>#}
+        </ol>
+{% endblock %}
+{% block content %}
+    <div class="row" id="pdf-div">
+
+    </div>
+{% endblock %}
+{% block add_tail_js %}
+<script>
+    $(document).ready(function(){
+        var str = $("#local_languages").text();
+
+        if (str.search("Chinese") != -1 )
+            pdf = "<iframe  id=\"pdf-iframe\"  src=\"{{url_for('serveStaticResource',filename='pdf/book_zh.pdf')}}\" style=\"width:"+(document.body.clientWidth-180)+"px;height:"+document.body.clientHeight+"px;text-align:center;\"></iframe>";
+        else
+            pdf=  "<iframe  id=\"pdf-iframe\"  src=\"{{url_for('serveStaticResource',filename='pdf/book_en.pdf')}}\" style=\"width:"+(document.body.clientWidth-180)+"px;height:"+document.body.clientHeight+"px;text-align:center;\"></iframe>";
+        {#console.log("client",document.body.clientWidth,document.body.clientHeight);#}
+        {#$("#pdf-iframe").css({width:(document.body.clientWidth-180),height:document.body.clientHeight})#}
+        console.log(pdf);
+        $("#pdf-div").append(pdf);
+    });
+
+</script>
+{% endblock %}

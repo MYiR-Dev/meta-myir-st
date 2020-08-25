@@ -1,0 +1,458 @@
+{% import 'appbuilder/baselib.html' as baselib with context %}
+
+{% if appbuilder %}
+    {% set app_name = appbuilder.app_name %}
+    {% set menu = appbuilder.menu %}
+    {% set languages = appbuilder.languages %}
+{% endif %}
+{% macro locale_menu(languages) %}
+{% set locale = session['locale'] %}
+{% if not locale %}
+    {% set locale = 'en' %}
+{% endif %}
+<li class="nav-item dropdown">
+    <a class="nav-link"  style="font-size: 1rem; color:#f0f3f5" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+       <div class="f16" id="local_languages">
+           <i class="flag {{languages[locale].get('flag')}}"  style="vertical-align:middle" ></i>
+           {{languages[locale].get('name')}}
+           <b class="caret"></b>
+       </div>
+    </a>
+    {% if languages.keys()|length > 1 %}
+    <div class="dropdown-menu dropdown-menu-right" style="min-width: 120px">
+{#    <li class="dropdown">#}
+        {% for lang in languages %}
+            {% if lang != locale %}
+                <a  class="dropdown-item"  style="min-width: 120px" tabindex="-1" href="{{appbuilder.get_url_for_locale(lang)}}">
+                  <div class="f16"><i class="flag {{languages[lang].get('flag')}}"></i> - {{languages[lang].get('name')}}
+                </div></a>
+                {% endif %}
+            {% endfor %}
+{#        </li>#}
+        </div>
+    {% endif %}
+</li>
+{% endmacro %}
+<!DOCTYPE html>
+<!--
+* CoreUI - Free Bootstrap Admin Template
+* @version v2.0.0
+* @link https://coreui.io
+* Copyright (c) 2018 creativeLabs Łukasz Holeczek
+* Licensed under MIT (https://coreui.io/license)
+-->
+
+<html lang="en">
+  <head>
+  {% block head_meta %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+    <meta name="author" content="Łukasz Holeczek">
+    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+
+  {% endblock %}
+    <title>{% block page_title %}{{app_name}}{% endblock %}</title>
+  {% block head_css %}
+      <!-- Icons-->
+    <link href="{{url_for('serveStaticResource',filename='vendors/@coreui/icons/css/coreui-icons.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('serveStaticResource',filename='vendors/flag-icon-css/css/flag-icon.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('serveStaticResource',filename='vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('serveStaticResource',filename='vendors/simple-line-icons/css/simple-line-icons.css')}}" rel="stylesheet">
+    <!-- Main styles for this application-->
+    <link href="{{url_for('serveStaticResource',filename='css/style.css')}}" rel="stylesheet">
+    <link href="{{url_for('serveStaticResource',filename='vendors/pace-progress/css/pace.min.css')}}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{url_for('serveStaticResource',filename='img/favicon.ico')}}" />
+{#    <link href="{{url_for('appbuilder.static',filename='css/bootstrap.min.css')}}" rel="stylesheet">#}
+{#        <link href="{{url_for('appbuilder.static',filename='css/font-awesome.min.css')}}" rel="stylesheet">#}
+{#      {% if appbuilder.app_theme %}#}
+{#           <link href="{{url_for('appbuilder.static',filename='css/themes/'+ appbuilder.app_theme )}}"  rel="stylesheet">#}
+{#      {% endif %}#}
+{#   <link href="{{url_for('appbuilder.static',filename='select2/select2.css')}}" rel="stylesheet">#}
+        <link href="{{url_for('appbuilder.static',filename='css/flags/flags16.css')}}" rel="stylesheet">
+        <link href="{{url_for('appbuilder.static',filename='css/ab.css')}}" rel="stylesheet">
+  {% endblock %}
+  {% block head_js %}
+    <!-- Global site tag (gtag.js) - Google Analytics-->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
+        <script src="{{url_for('appbuilder.static',filename='js/ab_filters.js')}}"></script>
+        <script src="{{url_for('appbuilder.static',filename='js/ab_actions.js')}}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      // Shared ID
+      gtag('config', 'UA-118965717-3');
+      // Bootstrap ID
+      gtag('config', 'UA-118965717-5');
+    </script>
+  {% endblock %}
+  </head>
+  {% block body %}
+      {% if not current_user.is_anonymous %}
+  <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+  {% else %}
+  <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-hidden">
+  {% endif %}
+
+        {% include 'appbuilder/general/confirm.html' %}
+        {% include 'appbuilder/general/alert.html' %}
+        {% block navbar %}
+    <header class="app-header navbar" style="background-color: #20a8d8;">
+      <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <img class="navbar-brand-full" src="{{url_for('serveStaticResource',filename='img/logo_myir.png')}}" width="100%" height="40" alt="CoreUI Logo">
+        <img class="navbar-brand-minimized" src="{{url_for('serveStaticResource',filename='img/myir_small.png')}}" width="60" height="20" alt="CoreUI Logo">
+      </a>
+{#      <ul class="nav navbar-nav d-md-down-none">#}
+{#        <li class="nav-item px-3">#}
+{#          <a class="nav-link" href="#">Dashboard</a>#}
+{#        </li>#}
+{#        <li class="nav-item px-3">#}
+{#          <a class="nav-link" href="#">Users</a>#}
+{#        </li>#}
+{#        <li class="nav-item px-3">#}
+{#          <a class="nav-link" href="#">Settings</a>#}
+{#        </li>#}
+{#      </ul>#}
+      <ul class="nav navbar-nav">
+          <li class="nav-item">
+              <img class="navbar-brand-full" src="{{url_for('serveStaticResource',filename='img/myir_vice.png')}}" width="310" height="30" alt="CoreUI Logo">
+          </li>
+      </ul>
+      <ul class="nav navbar-nav ml-auto">
+{#        <li class="nav-item d-md-down-none">#}
+{#          <a class="nav-link" href="#">#}
+{#            <i class="icon-bell"></i>#}
+{#            <span class="badge badge-pill badge-danger">5</span>#}
+{#          </a>#}
+{#        </li>#}
+{#        <li class="nav-item d-md-down-none">#}
+{#          <a class="nav-link" href="#">#}
+{#            <i class="icon-list"></i>#}
+{#          </a>#}
+{#        </li>#}
+{#        <li class="nav-item d-md-down-none">#}
+{#          <a class="nav-link" href="#">#}
+{#            <i class="icon-location-pin"></i>#}
+{#          </a>#}
+{#        </li>#}
+      {{ locale_menu(languages) }}
+        {% if not current_user.is_anonymous %}
+
+        <li class="nav-item dropdown" style="padding: 15px">
+          <a class="nav-link" style="font-size: 1rem; color:#f0f3f5 " data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+{#            <img class="img-avatar" src="img/avatars/6.jpg" alt="admin@bootstrapmaster.com">#}
+              <span class="fa fa-user"></span> {{g.user.get_full_name()}}
+{#            <li class="dropdown">#}
+{#                <a class="dropdown-toggle" data-toggle="dropdown" href="#">#}
+{#                   <span class="fa fa-user"></span> {{g.user.get_full_name()}}<b class="caret"></b>#}
+{#                </a>#}
+{#                <ul class="dropdown-menu">#}
+{#                    <li><a href="{{appbuilder.get_url_for_userinfo}}"><span class="fa fa-fw fa-user"></span>{{_("Profile")}}</a></li>#}
+{#                    <li><a href="{{appbuilder.get_url_for_logout}}"><span class="fa fa-fw fa-sign-out"></span>{{_("Logout")}}</a></li>#}
+{#                </ul>#}
+{#            </li>#}
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" style="min-width: 60px">
+{#            <div class="dropdown-header text-center">#}
+{#              <strong>Account</strong>#}
+{#            </div>#}
+{#            <a class="dropdown-item" href="#">#}
+{#              <i class="fa fa-bell-o"></i> Updates#}
+{#              <span class="badge badge-info">42</span>#}
+{#            </a>#}
+{#            <a class="dropdown-item" href="#">#}
+{#              <i class="fa fa-envelope-o"></i> Messages#}
+{#              <span class="badge badge-success">42</span>#}
+{#            </a>#}
+{#            <a class="dropdown-item" href="#">#}
+{#              <i class="fa fa-tasks"></i> Tasks#}
+{#              <span class="badge badge-danger">42</span>#}
+{#            </a>#}
+{#            <a class="dropdown-item" href="#">#}
+{#              <i class="fa fa-comments"></i> Comments#}
+{#              <span class="badge badge-warning">42</span>#}
+{#            </a>#}
+{#            <div class="dropdown-header text-center">#}
+{#              <strong>Settings</strong>#}
+{#            </div>#}
+            <a class="dropdown-item"  style="min-width: 60px" href="{{appbuilder.get_url_for_userinfo}}">
+              <i class="fa fa-user"></i> {{_("Profile")}}</a>
+{#            <a class="dropdown-item"  style="min-width: 60px" href="#">#}
+{#              <i class="fa fa-wrench"></i> Settings</a>#}
+{#            <a class="dropdown-item"  style="min-width: 60px" href="#">#}
+{#              <i class="fa fa-usd"></i> Payments#}
+{#              <span class="badge badge-secondary">42</span>#}
+{#            </a>#}
+{#            <a class="dropdown-item"  style="min-width: 60px" href="#">#}
+{#              <i class="fa fa-file"></i> Projects#}
+{#              <span class="badge badge-primary">42</span>#}
+{#            </a>#}
+{#            <div class="dropdown-divider"></div>#}
+{#            <a class="dropdown-item" href="#">#}
+{#              <i class="fa fa-shield"></i> Lock Account</a>#}
+            <a class="dropdown-item"  style="min-width: 60px" href="{{appbuilder.get_url_for_logout}}">
+              <i class="fa fa-lock"></i>{{_("Logout")}}</a>
+          </div>
+        </li>
+        {% else %}
+            <li  class="nav-item" style="padding: 15px"><a  class="nav-link"  style="font-size: 1rem; color:#f0f3f5 "  href="{{appbuilder.get_url_for_login}}">
+                <span class="fa fa-fw fa-sign-in"></span>{{_("Login")}}</a></li>
+        {% endif %}
+      </ul>
+{#      <button class="navbar-toggler aside-menu-toggler d-md-down-none" type="button" data-toggle="aside-menu-lg-show">#}
+{#        <span class="navbar-toggler-icon"></span>#}
+{#      </button>#}
+{#      <button class="navbar-toggler aside-menu-toggler d-lg-none" type="button" data-toggle="aside-menu-show">#}
+{#        <span class="navbar-toggler-icon"></span>#}
+{#      </button>#}
+    </header>
+    {% endblock %}
+    <div class="app-body">
+    {% block sidebar %}
+      <div class="sidebar">
+        <nav class="sidebar-nav">
+          <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="nav-icon icon-home"></i>{{_("Home")}}
+{#                <span class="badge badge-primary">NEW</span>#}
+              </a>
+            </li>
+            <li class="nav-title">{{_("System")}}</li>
+            <li class="nav-item">
+              <a class="nav-link" style="padding-bottom: 0.25rem;padding-top: 0.25rem" href="/measy/sysinfo">
+                <i class="nav-icon fa fa-info-circle"></i>{{_("System Information")}}
+{#                <span class="badge badge-primary">NEW</span>#}
+              </a>
+            </li>
+{#            <li class="nav-item">#}
+{#              <a class="nav-link"  style="padding-bottom: 0.25rem;padding-top: 0.25rem" href="/measy/sysupgrade">#}
+{#                <i class="nav-icon fa fa-retweet"></i>{{_("System Upgrade")}}#}
+{#                <span class="badge badge-primary">NEW</span>#}
+{#              </a>#}
+{#            </li>#}
+            <li class="nav-title">{{_("Settings")}}</li>
+            <li class="nav-item">
+              <a class="nav-link"  style="padding-bottom: 0.25rem;padding-top: 0.25rem" href="/measy/ethernet">
+                <i class="nav-icon  fa fa-cog"></i>{{_("Ethernet Settings")}}
+                  <span class="badge badge-primary" id = "eth_badge">{{ appbuilder.app.eth_status}}</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"  style="padding-bottom: 0.25rem;padding-top: 0.25rem" href="/measy/wifi">
+                <i class="nav-icon  fa fa-wifi"></i>{{_("WiFi Settings")}}
+                  <span class="badge badge-primary" id = "wifi_badge">{{ appbuilder.app.wifi_status}}</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"  style="padding-bottom: 0.25rem;padding-top: 0.25rem" href="/measy/mobile">
+                <i class="nav-icon fa fa-mobile"></i>{{_("Mobile Network Settings")}}
+                  <span class="badge badge-primary" id = "mobile_badge">{{ appbuilder.app.mobile_status}}</span>
+              </a>
+            </li>
+            <li class="nav-title">{{_("Applications")}}</li>
+            <li class="nav-item">
+              <a class="nav-link"  style="padding-bottom: 0.25rem;padding-top: 0.25rem" href="/measy/mqtt">
+                <i class="nav-icon fa fa-cloud"></i>{{_("MQTT Applicaton")}}
+{#                <span class="badge badge-primary">NEW</span>#}
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"  style="padding-bottom: 0.25rem;padding-top: 0.25rem" href="/measy/iec">
+                <i class="nav-icon fa fa-print"></i>{{_("IEC61850 Application")}}
+{#                <span class="badge badge-primary">NEW</span>#}
+              </a>
+            </li>
+            <li class="nav-title">{{_("Documents")}}</li>
+            <li class="nav-item">
+              <a class="nav-link"  style="padding-bottom: 0.25rem;padding-top: 0.25rem" href="/measy/document">
+                <i class="nav-icon fa fa-book"></i>{{_("Documents")}}
+{#                <span class="badge badge-primary">NEW</span>#}
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+      </div>
+        {% endblock %}
+      <main class="main"  style="padding:1px;">
+          {% block breadcrumb %}
+        <!-- Breadcrumb-->
+{#        <ol class="breadcrumb">#}
+{#          <li class="breadcrumb-item">Home</li>#}
+{#          <li class="breadcrumb-item">#}
+{#            <a href="#">Admin</a>#}
+{#          </li>#}
+{#          <li class="breadcrumb-item active">Dashboard</li>#}
+{#          <!-- Breadcrumb Menu-->#}
+{#          <li class="breadcrumb-menu d-md-down-none">#}
+{#            <div class="btn-group" role="group" aria-label="Button group">#}
+{#              <a class="btn" href="#">#}
+{#                <i class="icon-speech"></i>#}
+{#              </a>#}
+{#              <a class="btn" href="..">#}
+{#                <i class="icon-graph"></i>  Dashboard</a>#}
+{#              <a class="btn" href="#">#}
+{#                <i class="icon-settings"></i>  Settings</a>#}
+{#            </div>#}
+{#          </li>#}
+{#        </ol>#}
+              {% endblock %}
+        <div class="container-fluid" id="ui-parent" style="padding-right:1px; padding-left:1px">
+          <div id="ui-view">
+          {% block messages %}
+            {% include 'appbuilder/flash.html' %}
+          {% endblock %}
+          {% block content %}
+          {% endblock %}
+          </div>
+        </div>
+      </main>
+
+
+    </div>
+        {% block footer %}
+    <footer class="app-footer">
+      <div>
+        <a href="#">Copyright</a>
+        <span>&copy; MYIR Electronics Limited 2011-2019 all rights reserved.</span>
+      </div>
+      <div class="ml-auto">
+        <span>Powered by</span>
+        <a href="https://coreui.io">CoreUI</a>
+      </div>
+    </footer>
+            {% endblock %}
+  {% block tail_js %}
+      <!-- CoreUI and necessary plugins-->
+    <script src="{{url_for('serveStaticResource',filename='vendors/jquery/js/jquery.min.js')}}"></script>
+    <script src="{{url_for('serveStaticResource',filename='vendors/popper.js/js/popper.min.js')}}"></script>
+    <script src="{{url_for('serveStaticResource',filename='vendors/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('serveStaticResource',filename='vendors/pace-progress/js/pace.min.js')}}"></script>
+    <script src="{{url_for('serveStaticResource',filename='vendors/perfect-scrollbar/js/perfect-scrollbar.min.js')}}"></script>
+    <script src="{{url_for('serveStaticResource',filename='vendors/@coreui/coreui/js/coreui.min.js')}}"></script>
+    <script src="{{url_for('appbuilder.static',filename='js/ab.js')}}"></script>
+    <script src="{{url_for('serveStaticResource',filename='js/socket.io.js')}}"></script>
+{#    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.min.js"></script>#}
+    <script src="{{ url_for('serveStaticResource', filename='js/measy/measy.js')}}" type="text/javascript"></script>
+    <script type="text/javascript" charset="utf-8">
+// use flask-socketio
+    var socket = null;
+    $(document).ready(function() {
+            // Use a "/test" namespace.
+            // An application can open a connection on multiple namespaces, and
+            // Socket.IO will multiplex all those connections on a single
+            // physical channel. If you don't care about multiple channels, you
+            // can set the namespace to an empty string.
+            namespace = '/test';
+
+            // Connect to the Socket.IO server.
+            // The connection URL has the following format:
+            //     http[s]://<domain>:<port>[/<namespace>]
+            if(socket === null) {
+                socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port + namespace);
+            }
+            // Event handler for new connections.
+            // The callback function is invoked when a connection with the
+            // server is established.
+            socket.on('connect', function () {
+                socket.emit('my_event', {data: 'websocket connected!'});
+            });
+
+            socket.on('wifi_badge_status', function (wifi_status) {
+                if(wifi_status["connect"] != "off/any"){
+                   $("#wifi_badge").html(wifi_status["connect"]) ;
+                }
+                else
+                {
+                    if(wifi_status["switch"] == "on")
+                        $("#wifi_badge").html("ON")
+                    else
+                        $("#wifi_badge").html("OFF")
+                }
+            });
+            socket.on('mobile_status', function (mobile_status) {
+                if(mobile_status["switch"] == "on"){
+                    {#if(mobile_status["ip"] =='' || mobile_status["ip"] == null || mobile_status["ip"]=="undefined")#}
+                    if(mobile_status["ip"] !=='')
+                    {
+                         $("#wifi_badge").html("ON")
+                    }
+                    else
+                    {
+
+                        $("#mobile_badge").html("4G") ;
+                    }
+                }
+                else
+                {
+                   $("#mobile_badge").html("OFF")
+                }
+            });
+            socket.on('eth_badge_status', function (eth_status) {
+                if(eth_status["ip"] =='' || eth_status["ip"] == null || eth_status["ip"]=="undefined"){
+                    $("#eth_badge").html("OFF") ;
+                }
+                else
+                {
+                   $("#eth_badge").html("ON")
+                }
+            });
+
+            // Event handler for server sent data.
+            // The callback function is invoked whenever the server emits data
+            // to the client. The data is then displayed in the "Received"
+            // section of the page.
+       //     socket.on('my_response', function (msg) {
+       //         $('#log').append('<br>' + $('<div/>').text('Received #' + msg.count + ': ' + msg.data).html());
+       //     });
+
+        //    socket.on('my_response', function (msg) {
+        //        $('#message_list').append('<li>'+ 'Received #' + msg.count + ': ' + msg.data +'</li>');
+        //    });
+            // Interval function that tests message latency by sending a "ping"
+            // message. The server then responds with a "pong" message and the
+            // round trip time is measured.
+//            var ping_pong_times = [];
+//            var start_time;
+//            window.setInterval(function () {
+//                start_time = (new Date).getTime();
+//                socket.emit('my_ping');
+//            }, 1000);
+
+            // Handler for the "pong" message. When the pong is received, the
+            // time from the ping is stored, and the average of the last 30
+            // samples is average and displayed.
+ //          socket.on('my_pong', function () {
+//                var latency = (new Date).getTime() - start_time;
+//                ping_pong_times.push(latency);
+//                ping_pong_times = ping_pong_times.slice(-30); // keep last 30 samples
+//                var sum = 0;
+//                for (var i = 0; i < ping_pong_times.length; i++)
+//                    sum += ping_pong_times[i];
+//                $('#ping-pong').text(Math.round(10 * sum / ping_pong_times.length) / 10);
+//            });
+    });
+    </script>
+{% endblock %}
+
+{% block add_tail_js %}
+{% endblock %}
+
+{% block tail %}
+{% endblock %}
+</body>
+{% endblock %}
+</html>

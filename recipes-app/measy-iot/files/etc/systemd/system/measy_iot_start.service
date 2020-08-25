@@ -1,0 +1,12 @@
+[Unit]
+Description=measy_iot_start
+After=systemd-networkd.service connmand.service dbus.service
+
+
+[Service]
+Type=forking
+ExecStart=/bin/sh /usr/bin/measy_iot_start.sh >> /usr/share/measy_iot.log
+
+[Install]
+WantedBy=multi-user.target
+Alias=measy_iot_start.service

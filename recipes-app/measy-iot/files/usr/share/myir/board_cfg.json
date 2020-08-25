@@ -1,0 +1,21 @@
+{
+        "board_info": {
+                "system": {
+                        "Gateway_version": "MEasy IOT Demo",
+                        "linux_version": "linux-4.19.9",
+                        "uboot_version": "u-boot-2018.11",
+                        "gcc_version": "arm-linux-gcc 7.2.0",
+                        "manufacturer": "MYIR Electronics Limited",
+                        "board": "MYD-YA157",
+                        "CPU": "ST STM32MP157",
+                        "memory": "256MB",
+                        "storage": "512MB NAND"
+                }
+        },
+
+        "dbus_info": {
+                "dbus_name": "com.myirtech.mxde",
+                "dbus_path": "/com/myirtech/mxde",
+                "dbus_interface": "com.myirtech.mxde.MxdeInterface"
+        }
+}

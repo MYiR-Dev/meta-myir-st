@@ -1,0 +1,494 @@
+{% extends "appbuilder/base.html" %}
+{% block page_title %}{{_("MQTT Applicaton")}}{% endblock %}
+{% block head_css %}
+    {{ super() }}
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+{#        <link href="{{url_for('serveStaticResource', filename='assets/global/plugins/ladda/ladda-themeless.min.css')}}" rel="stylesheet" type="text/css" />#}
+    <!-- END PAGE LEVEL PLUGINS -->
+
+{% endblock %}
+{% block head_js %}
+    {{ super() }}
+{#    <script src="{{ url_for('serveStaticResource', filename='vendors/jquery-validation/js/jquery.validate.js')}}" type="text/javascript"></script>#}
+    <script>
+
+//# sourceMappingURL=validation.js.map
+    </script>
+{% endblock %}
+
+{% block breadcrumb %}
+ <!-- Breadcrumb-->
+<ol class="breadcrumb" style="margin-bottom:1px; padding: 0.25rem">
+          <li class="breadcrumb-item"><a href="/"><i class="fa fa-home"></i> {{_("Home")}}</a></li>
+          <li class="breadcrumb-item">
+            <a href="#">{{_("Applications")}}</a>
+          </li>
+          <li class="breadcrumb-item active">{{_("MQTT Applicaton")}}</li>
+          <!-- Breadcrumb Menu-->
+{#          <li class="breadcrumb-menu d-md-down-none">#}
+{#            <div class="btn-group" role="group" aria-label="Button group">#}
+{#              <a class="btn" href="#">#}
+{#                <i class="icon-speech"></i>#}
+{#              </a>#}
+{#              <a class="btn" href="..">#}
+{#                <i class="icon-graph"></i>  Dashboard</a>#}
+{#              <a class="btn" href="#">#}
+{#                <i class="icon-settings"></i>  Settings</a>#}
+{#            </div>#}
+{#          </li>#}
+        </ol>
+{% endblock %}
+{% block content %}
+<!-- BEGIN SERVER SECTION -->
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN SERVER FORM-->
+        <form id="server_form" class="form-horizontal needs-validation" novalidate="" action="" method="post" enctype="multipart/form-data">
+            <div class="card">
+                <div class="card-header">
+        {#      <div class="caption">#}
+                    <i class="fa fa-cloud font-blue"></i>{{ _("MQTT Server") }}
+        {#      </div>#}
+                    <div class="card-header-actions">
+                        <label class="switch switch-label switch-pill switch-primary" style="margin: 0px">
+                            <input id="mq_switch" class="switch-input" type="checkbox"/>
+                            <span class="switch-slider" data-checked="{{ _("On") }}" data-unchecked="{{ _("Off") }}"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label class=" col-form-label col-md-2" style="text-align: right"  for="mq_clientid_input">{{ _("Client ID") }}</label>
+                        <div class="col-md-6">
+                            <input class="form-control" id="mq_clientid_input" type="text" name="mq_clientid_input" value={{ appbuilder.app.mqtt_id}} placeholder="MEASY_IOT_0001"  required=""/>
+        {#                  <span class="help-block"> This is client ID </span>#}
+                            <div class="invalid-feedback">
+                              Please choose a username.
+                            </div>
+                        </div>
+                        <div class="col-md-4 ">
+                            <button type="submit" id="mq_connect_btn" class="btn  btn-primary green"><i class="fa fa-toggle-on"></i> {{ _("CONNECT") }}</button>
+                            <button type="button" id="mq_disconnect_btn" class="btn  btn-primary default"><i class="fa fa-toggle-off"></i> {{ _("DISCONNECT") }}</button>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class=" col-form-label col-md-2" style="text-align: right"  for="mq_host_input">{{ _("Server Host") }}</label>
+                        <div class="col-md-6">
+                            <input class="form-control" id="mq_host_input" type="text" name="mq_host_input" value="test.mosquitto.org" placeholder="test.mosquitto.org"  required=""/>
+        {#                  <span class="help-block"> This is server host address </span>#}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class=" col-form-label col-md-2" style="text-align: right"  for="mq_port_input">{{ _("Server Port") }}</label>
+                        <div class="col-md-6">
+                            <input class="form-control" id="mq_port_input" type="text" name="mq_port_input" value="1883" placeholder="1883" />
+        {#                  <span class="help-block"> This is server host address </span>#}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label" style="text-align: right"  for="mq_qos_select">{{ _("QOS") }}</label>
+                        <div class="col-md-6">
+                            <select class="form-control" id="mq_qos_select" name="mq_qos_select">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+        {#                  <span class="help-block"> Select QOS. </span>#}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-md-2" style="text-align: right" >{{ _("Retain") }}</label>
+                        <div class="col-md-6 col-form-label">
+                            <div class="radio-list">
+                                <label><input type="radio" name="mq_retain_radio" id="mq_retain_radio" value="1" /> {{ _("True") }} </label>
+                                <label><input type="radio" name="mq_retain_radio" id="mq_retain_radio" value="0" checked/> {{ _("False") }} </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- END SERVER FORM-->
+    </div>
+</div>
+<!-- END SERVER SECTION -->
+<!-- BEGIN SUBSCRIBE SECTION -->
+<div class="row " >
+    <div class="col-md-6 "  id = "left">
+        <div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN SUBSCRIBE FORM -->
+        <form  id="sub_form" class="form-horizontal needs-validation" novalidate="" action="" method="post" enctype="multipart/form-data">
+            <div class="card" style="height: 700px" id = "card_left">
+                <div class="card-header">
+                    <div class="caption">
+                        <i class="fa fa-cloud font-blue"></i>
+                        <span class="caption-subject font-blue sbold uppercase">{{ _("Subscribe") }}</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label class=" col-form-label col-md-2" style="text-align: right"  for="mq_subtopic_input">{{ _("Topic") }}</label>
+                        <div class="col-md-6">
+                            <input class="form-control" id="mq_subtopic_input" type="text" name="mq_subtopic_input" value="topic" placeholder="{{ _("Topic") }}"   required="" > </input>
+                        </div>
+                        <div class="col-md-4 ">
+                            <button type="submit" id="mq_sub_btn" class="btn  btn-primary green "><i class="fa fa-plus-circle"></i> {{ _("Sub") }}</button>
+                            <button type="button" id="mq_unsub_btn" class="btn  btn-primary default "><i class="fa fa-minus-circle"></i> {{ _("Unsub") }}</button>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class=" col-form-label col-md-2" style="text-align: right"  for="text-input"> {{ _("Message") }}</label>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                        <div class="caption">
+                                            <div class="caption-desc font-grey-cascade"> {{_('List all the messages received from the subscribed topics.')}}</div>
+                                        </div>
+                                </div>
+                                <div class="card-body" id="spy-example2" data-spy="scroll" data-target="#list-example" data-offset="0" style="height: 400px; padding-left:1px; padding-right:1px; padding-top: 2px; overflow: auto">
+                                    <ul class="list-group" id="message_list">
+{#                                        <li class="list-group-item list-group-item-action flex-column align-items-start" style="padding: 0.75rem;">#}
+{#                                            <div class="d-flex w-100 justify-content-between">#}
+{#                                                <h3 class="uppercase bold">#}
+{#                                                    Sample Topic#}
+{#                                                </h3>#}
+{#                                                <span class="list-icon-container">#}
+{#                                                    <a href="javascript:;"><i class="icon-close"></i></a>#}
+{#                                                </span>#}
+{#                                            </div>#}
+{#                                            <div class="d-flex w-100 justify-content-between">#}
+{#                                                <p>Listing Message of Sample Topic,Listing Message of Sample Topic,Listing Message of Sample Topic,Listing Message of Sample Topic,Listing Message of Sample Topic,Listing Message of Sample Topic,Listing Message of Sample Topic</p>#}
+{#                                                <span class="list-datetime"> 11am <br/> 8 Nov </span>#}
+{#                                            </div>#}
+{#                                        </li>#}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 ">
+                            <button id="clear_message" type="button" class="btn btn-primary green"><i class="fa fa-trash"> </i> {{ _("Clear") }} </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- END SUBSCRIBE FORM -->
+    </div>
+</div>
+    </div>
+<!-- END SUBSCRIBE SECTION -->
+<!-- BEGIN PUBLISH SECTION -->
+    <div class="col-md-6 "  id = "right">
+        <div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN PUBLISH FORM -->
+        <form  id="pub_form" action="#" class="form-horizontal form-row-seperated needs-validation" novalidate="">
+            <div class="card" style="height: 700px" id = "card_right">
+                <div class="card-header">
+    {#                  <div class="caption">#}
+                        <i class="fa fa-cloud font-blue"></i> {{ _("Publish Message") }}
+    {#                  </div>#}
+                        <div class="card-header-actions">
+{#                            <a id="mq-pub-a" class="card-header-action btn-setting" href="javascript:;">#}
+{#                                <i class="btn btn-primary fa fa-cloud-upload"> {{ _("Publish") }}</i>#}
+{#                            </a>#}
+                        </div>
+                    </div>
+                <div class="card-body">
+                        <div class="form-group row">
+                            <label class=" col-form-label col-md-2" style="text-align: right"  for="mq_pub_topic">{{ _("Topic") }}</label>
+                            <div class="col-md-6">
+                                <input type="text" id="mq_pub_topic" name="mq_pub_topic" value="topic" placeholder="{{ _("Topic") }}" class="form-control"  required=""/>
+    {#                          <span class="help-block"> This is client ID </span>#}
+                            </div>
+                            <div class="col-md-4 ">
+                                <button type="submit" id="mq_pub_btn" class="btn  btn-primary green"><i class="fa fa-cloud-upload"></i> {{ _("Publish") }}</button>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class=" col-form-label col-md-2" style="text-align: right"  for="mq_pub_msg">{{ _("Message") }}</label>
+                            <div class="col-md-6">
+                                <input type="text"  id="mq_pub_msg" name="mq_pub_msg" value="test" placeholder="{{ _("Message") }}" class="form-control" required=""/>
+    {#                          <span class="help-block"> This is server host address </span>#}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="control-label col-md-2" style="text-align: right"  >{{ _("QOS") }}</label>
+                            <div class="col-md-6">
+                                <select  id="mq_pub_qos" class="form-control">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+    {#                          <span class="help-block"> Select QOS. </span>#}
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </form>
+        <!-- END PUBLISH FORM -->
+    </div>
+</div>
+    </div>
+</div>
+<!-- END PUBLISH SECTION -->
+{% endblock %}
+{% block add_tail_js %}
+    {{ super() }}
+    <script src="{{ url_for('serveStaticResource', filename='vendors/jquery-validation/js/jquery.validate.js')}}" type="text/javascript"></script>
+{#    <script src="{{ url_for('serveStaticResource', filename='js/measy/mqtt.js')}}" type="text/javascript"></script>#}
+    <script type="text/javascript" charset="utf-8">
+$('#server_form').validate({
+    submitHandler: function(form) {
+    // some other code
+    // maybe disabling submit button then:
+    {#alert('server_form submitted!');#}
+  },
+  rules: {
+    mq_clientid_input: 'required',
+    mq_port_input: 'required',
+    mq_host_input: {
+      required: true,
+      minlength: 2
+    }
+  },
+  messages: {
+    mq_clientid_input: '{{ _("CONNECT")}}',
+    mq_port_input: 'Please enter your lastname',
+    mq_host_input: {
+      required: 'Please enter a username',
+      minlength: 'Your username must consist of at least 2 characters'
+    }
+  },
+  errorElement: 'em',
+  errorPlacement: function errorPlacement(error, element) {
+    error.addClass('invalid-feedback');
+
+    if (element.prop('type') === 'checkbox') {
+      error.insertAfter(element.parent('label'));
+    } else {
+      error.insertAfter(element);
+    }
+  },
+  // eslint-disable-next-line object-shorthand
+  highlight: function highlight(element) {
+    $(element).addClass('is-invalid').removeClass('is-valid');
+  },
+  // eslint-disable-next-line object-shorthand
+  unhighlight: function unhighlight(element) {
+    $(element).addClass('is-valid').removeClass('is-invalid');
+  }
+});
+
+$('#sub_form').validate({
+    submitHandler: function(form) {
+    // some other code
+    // maybe disabling submit button then:
+    {#alert('sub_form submitted!');#}
+  },
+  rules: {
+    mq_subtopic_input: 'required',
+  },
+  messages: {
+    mq_subtopic_input: '{{ _("CONNECT")}}',
+  },
+  errorElement: 'em',
+  errorPlacement: function errorPlacement(error, element) {
+    error.addClass('invalid-feedback');
+
+    if (element.prop('type') === 'checkbox') {
+      error.insertAfter(element.parent('label'));
+    } else {
+      error.insertAfter(element);
+    }
+  },
+  // eslint-disable-next-line object-shorthand
+  highlight: function highlight(element) {
+    $(element).addClass('is-invalid').removeClass('is-valid');
+  },
+  // eslint-disable-next-line object-shorthand
+  unhighlight: function unhighlight(element) {
+    $(element).addClass('is-valid').removeClass('is-invalid');
+  }
+});
+
+$('#pub_form').validate({
+    submitHandler: function(form) {
+    // some other code
+    // maybe disabling submit button then:
+    {#alert('pub_form submitted!');#}
+  },
+  rules: {
+    mq_pub_topic: 'required',
+    mq_pub_message: 'required'
+  },
+  messages: {
+    mq_pub_topic: '{{ _("CONNECT")}}',
+    mq_pub_message: '{{ _("CONNECT") }}'
+  },
+  errorElement: 'em',
+  errorPlacement: function errorPlacement(error, element) {
+    error.addClass('invalid-feedback');
+
+    if (element.prop('type') === 'checkbox') {
+      error.insertAfter(element.parent('label'));
+    } else {
+      error.insertAfter(element);
+    }
+  },
+  // eslint-disable-next-line object-shorthand
+  highlight: function highlight(element) {
+    $(element).addClass('is-invalid').removeClass('is-valid');
+  },
+  // eslint-disable-next-line object-shorthand
+  unhighlight: function unhighlight(element) {
+    $(element).addClass('is-valid').removeClass('is-invalid');
+  }
+});
+    // <script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+
+
+            var mqtt_connected = "{{appbuilder.app.mqtt_connected}}";
+            console.log("mqtt_connected:::" + mqtt_connected);
+            if(mqtt_connected === "connected"){
+                $("#mq_switch").attr("checked", "checked");
+            }
+            else
+            {
+                $("#mq_switch").removeAttr("checked")
+            }
+            $("#mq_switch").click(function () {
+                  console.log("checkbox click");
+                  return false;
+            });
+
+            $("#server_form").submit(function (){
+                 console.log("connecting server");
+                    var mq_clientid = $("#mq_clientid_input").val();
+                    var mq_host = $("#mq_host_input").val();
+                    var mq_port = $("#mq_port_input").val();
+                    var mq_qos = $("#mq_qos_select").val();
+                    var mq_retain = $("#mq_retain_radio").val();
+
+                    var data = {
+                        data: JSON.stringify({
+                            'mq_clientid': mq_clientid,
+                            'mq_host': mq_host,
+                            'mq_port': mq_port,
+                            'mq_qos': mq_qos,
+                            'mq_retain':mq_retain
+                        }),
+                    };
+                    //
+                    // $.ajax({
+                    //     url:'/measy/mqtt',
+                    //     type:'POST',
+                    //     data:data,
+                    //     dataType:'json',
+                    //     success:function (res) {
+                    //         mq_switch.attr("checked", true);
+                    //     },
+                    //     error:function (res) {
+                    //         mq_switch.attr("checked", false);
+                    //         console.log(res);
+                    //         console.log(1);
+                    //     }
+                    // });
+                    if(mqtt_connected === "disconnected") {
+                        socket.emit('mq_connect', data);
+                    }
+            });
+
+            $("#mq_disconnect_btn").click(function () {
+                socket.emit('mq_disconnect');
+            });
+
+            $("#message_list").on("click", "li .icon-close", function () {
+                $(this).closest('li').remove();
+            });
+            $("#mq_pub_btn").on("click",  function(){
+                var mq_pub_topic = $("#mq_pub_topic").val();
+                var mq_pub_message = $("#mq_pub_msg").val();
+                var mq_pub_qos = $("#mq_pub_qos").val();
+                    var data = {
+                        data:JSON.stringify({
+                            'mq_topic': mq_pub_topic,
+                            'mq_message': mq_pub_message,
+                            'mq_qos': mq_pub_qos,
+                        }),
+                    };
+
+                    socket.emit("mq_publish", data);
+            });
+
+            $("#mq_sub_btn").on("click", function(){
+                var mq_sub_topic = $("#mq_subtopic_input").val();
+                    var data = {
+                        data: JSON.stringify({
+                            'mq_topic': mq_sub_topic,
+                        }),
+                    };
+                socket.emit("mq_subscribe", data);
+            });
+
+            $("#mq_unsub_btn").on("click", function(){
+                var mq_sub_topic = $("#mq_subtopic_input").val();
+                    var data = {
+                        data:JSON.stringify({
+                            'mq_topic': mq_sub_topic,
+                        }),
+                    };
+                $("#sub_form").valid();
+                socket.emit("mq_unsubscribe", data);
+            });
+
+            $("#clear_message").click(function () {
+                var ul = document.getElementById("message_list");
+                while(ul.hasChildNodes()){
+                    ul.removeChild(ul.firstChild);
+                }
+            });
+
+
+
+    // Event handler for server sent data.
+    // The callback function is invoked whenever the server emits data to the client. The data is then displayed
+    // in different section of the page.
+    socket.on('mqtt_connection', function (msg) {
+                var status = msg.status;
+                if(status === "connected"){
+                    $("#mq_switch").attr("checked", true);
+                }
+                else
+                {
+                    $("#mq_switch").removeAttr("checked")
+                }
+            });
+
+    socket.on('mqtt_message', function (msg) {
+                var  list_item =
+                    "<li class='list-group-item list-group-item-action flex-column align-items-start' style='padding: 0.75rem;'>"+
+                    "<div class='d-flex w-100 justify-content-between'>" +
+                    "   <h3 class='uppercase bold'>" +
+                    "       <p>"+msg.count+"</p>" +
+                    "   </h3> " +
+                    "   <span class='list-icon-container'> " +
+                    "       <a href='javascript:;'> " +
+                    "           <i class='icon-close'></i> " +
+                    "       </a> " +
+                    "   </span> " +
+                    "</div>"+
+                    "<div class='d-flex w-100 justify-content-between'>" +
+                    "   <p>"+msg.data+"</p>" +
+                    "   <span class='list-datetime'>"+ new Date().Format("hh:mm:ss") +
+                    "   <br/>"+ new Date().Format("yyyy-MM-dd") +" </span>" +
+                    "</div>" +
+                    "</li>";
+
+                $('#message_list').append(list_item);
+            });
+ });
+    </script>
+{% endblock %}

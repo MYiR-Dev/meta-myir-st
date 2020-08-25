@@ -1,0 +1,396 @@
+{% extends "appbuilder/base.html" %}
+{% block page_title %}{{_("Ethernet Settings")}}{% endblock %}
+{% block breadcrumb %}
+ <!-- Breadcrumb-->
+<ol class="breadcrumb" style="margin-bottom:1px; padding: 0.25rem">
+          <li class="breadcrumb-item"><a href="/"><i class="fa fa-home"></i> {{_("Home")}}</a></li>
+          <li class="breadcrumb-item">
+            <a href="#">{{_("Settings")}}</a>
+          </li>
+          <li class="breadcrumb-item active">{{_("Ethernet Settings")}}</li>
+          <!-- Breadcrumb Menu-->
+{#          <li class="breadcrumb-menu d-md-down-none">#}
+{#            <div class="btn-group" role="group" aria-label="Button group">#}
+{#              <a class="btn" href="#">#}
+{#                <i class="icon-speech"></i>#}
+{#              </a>#}
+{#              <a class="btn" href="..">#}
+{#                <i class="icon-graph"></i>  Dashboard</a>#}
+{#              <a class="btn" href="#">#}
+{#                <i class="icon-settings"></i>  Settings</a>#}
+{#            </div>#}
+{#          </li>#}
+        </ol>
+{% endblock %}
+{% block content %}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card panel panel-default">
+            <div class="card-header panel-heading"><i class="fa fa-link fa-fw"></i>{{_("Ethernet Settings")}}</div>
+                <div class="card-body panel-body">
+                                            {% if forms %}
+                                {% set interface = forms['active'] %}
+                            {% endif %}
+{#                {{ forms['active'] }}#}
+                    <ul class="nav nav-tabs" role="tablist">
+
+                        <li class="nav-item">
+
+                            {% if ( interface == '1' )%}
+                            <a id="link-lan" class="nav-link" data-toggle="tab" href="#tab_lan" role="tab" aria-controls="tab_lan">{{_("LAN")}}</a>
+                            {% else %}
+                            <a id="link-lan" class="nav-link active" data-toggle="tab" href="#tab_lan" role="tab" aria-controls="tab_lan">{{_("LAN")}}</a>
+                            {% endif %}
+                        </li>
+                        <li class="nav-item">
+                        {% if (interface == '1') %}
+                            <a id="link-wan" class="nav-link active" data-toggle="tab" href="#tab_wan" role="tab" aria-controls="tab_wan">{{_("WAN")}}</a>
+                        {% else %}
+                            <a id="link-wan" class="nav-link" data-toggle="tab" href="#tab_wan" role="tab" aria-controls="tab_wan">{{_("WAN")}}</a>
+                        {% endif %}
+
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+
+                        <div {% if ( interface == '1' )%}class="tab-pane"{% else %} class="tab-pane active"{% endif %} role="tabpanel" id="tab_lan" aria-valuenow="{{ forms['lan'].interface.data }}">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h5 class="page-header">{{_("LAN")}}: {{ _("If DHCP is supported, users can choose Dynamic IP address, or users should set static IP address below.") }} </h5>
+                                    <p></p>
+                                </div>
+                            </div>
+                            <form id="form_lan" name="form_lan" class="form-horizontal" action="/measy/ethernet?interface=0" method="post" enctype="multipart/form-data">
+                                {{ forms['lan'].hidden_tag() }}
+                                <div class="form-group">
+                                    {% for subfield in forms['lan'].dhcpen %}
+                                        <div id="radio_lan" class="radio">
+                                            {% if subfield.id == "lan-dhcpen-0" %}
+                                            {{ subfield(disabled="True")}}
+                                            {% else %}
+                                            {{ subfield()}}
+                                            {% endif %}
+                                            {{ subfield.label() }}
+                                            {% if subfield.id == "lan-dhcpen-0" %}<span class="text" style="padding-left: 10px; color: red;">{{ _("[DHCP is not supported on LAN!]") }}</span>{% endif %}
+                                        </div>
+                                    {% endfor %}
+                                    <div class="row">
+                                        <label class="col-md-2 col-form-label" for="text-input">
+                                            <h6>{{_("IP Address")}}:</h6>
+                                        </label>
+                                        <div class="col-xs-10 text-left">
+                                            <div class="chat-body clearfix">
+                                                {{ forms['lan'].address() }}
+                                                {% for error in forms['lan'].address.errors %}
+                                                    <span class="is-invalid"  style="color: red">[{{ error }}]</span>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-md-2 col-form-label" for="text-input">
+                                            <h6>{{_("Net Mask")}}:</h6>
+                                        </label>
+                                        <div class="col-xs-10 text-left">
+                                            <div class="chat-body clearfix">
+                                                {{ forms['lan'].netmask() }}
+                                                 {% for error in forms['lan'].netmask.errors %}
+                                                    <span class="is-invalid"  style="color: red">[{{ error }}]</span>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label  class="col-md-2 col-form-label" for="text-input">
+                                            <h6>{{_("Gateway")}}:</h6>
+                                        </label>
+                                        <div class="col-xs-10 text-left">
+                                            <div class="chat-body clearfix">
+                                                {{ forms['lan'].gateway() }}
+                                                 {% for error in forms['lan'].gateway.errors %}
+                                                    <span class="is-invalid"  style="color: red">[{{ error }}]</span>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label  class="col-md-2 col-form-label">
+                                            <p> </p>
+                                        </label>
+                                        <div class="col-xs-10 text-left">
+                                        <button id="lan_save_btn" name="lan_save_btn" type="button" class="btn  btn-sm btn-primary ">{{_("Setting")}}
+                                        <i class="fa fa-save"></i></button>
+                                        <button id="lan_get_btn" name="lan_get_btn"  type="button" class="btn  btn-sm btn-primary">{{_("Get")}}
+                                        <i class="fa fa-question-circle "></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div  {% if ( interface == '1' )%}class="tab-pane active"{% else %}class="tab-pane" {% endif %} role="tabpanel"  id="tab_wan"  aria-valuenow="{{ forms['wan'].interface.data }}">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h5 class="page-header">{{_("WAN")}}: {{ _("If DHCP is supported, users can choose Dynamic IP address, or users should set static IP address below.") }}</h5>
+                                    <p></p>
+                                </div>
+                            </div>
+                            <form id="form_wan" name="form_wan" class="form-horizontal" action="/measy/ethernet?interface=1" method="post" enctype="multipart/form-data">
+                                {{ forms['wan'].hidden_tag() }}
+                                <div class="form-group">
+                                    {% for subfield in forms['wan'].dhcpen %}
+                                    <div id="radio_wan" class="radio">
+                                    {{ subfield()}}
+                                    {{subfield.label}}
+                                    </div>
+                                    {% endfor %}
+                                    <div class="row">
+                                        <label class="col-md-2 col-form-label" for="text-input">
+                                            <h6>{{_("IP Address")}}:</h6>
+                                        </label>
+                                        <div class="col-xs-10 text-left">
+                                            <div class="chat-body clearfix">
+                                                {{ forms['wan'].address() }}
+                                                 {% for error in forms['wan'].address.errors %}
+                                                    <span class="is-invalid" style="color: red">[{{ error }}]</span>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-md-2 col-form-label" for="text-input">
+                                            <h6>{{_("Net Mask")}}:</h6>
+                                        </label>
+                                        <div class="col-xs-10 text-left">
+                                            <div class="chat-body clearfix">
+                                                {{ forms['wan'].netmask() }}
+                                                 {% for error in forms['wan'].netmask.errors %}
+                                                    <span class="is-invalid"  style="color: red">[{{ error }}]</span>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label  class="col-md-2 col-form-label" for="text-input">
+                                            <h6>{{_("Gateway")}}:</h6>
+                                        </label>
+                                        <div class="col-xs-10 text-left">
+                                            <div class="chat-body clearfix">
+                                                {{ forms['wan'].gateway() }}
+                                                 {% for error in forms['wan'].gateway.errors %}
+                                                    <span class="is-invalid" style="color: red">[{{ error }}]</span>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label  class="col-md-2 col-form-label">
+                                            <p> </p>
+                                        </label>
+                                        <div class="col-xs-10 text-left">
+                                        <button id="wan_save_btn" name="wan_save_btn"  type="button" class="btn  btn-sm btn-primary">{{_("Setting")}}
+                                        <i class="fa fa-save"></i></button>
+                                        <button id="wan_get_btn" name="wan_get_btn"  type="button" class="btn  btn-sm btn-primary">{{_("Get")}}
+                                        <i class="fa fa-question-circle "></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block add_tail_js %}
+    {{ super() }}
+{#    <script src="{{ url_for('serveStaticResource', filename='vendors/jquery-validation/js/jquery.validate.js')}}" type="text/javascript"></script>#}
+{#    <script src="{{ url_for('serveStaticResource', filename='js/measy/mqtt.js')}}" type="text/javascript"></script>#}
+    <script type="text/javascript" charset="utf-8">
+    function displayData(res){
+        if(res.hasOwnProperty("eth0") )
+        {
+            var lan_dhcpen = res['eth0']['Method'];
+            var lan_address = res['eth0']['Address'];
+            var lan_netmask = res['eth0']['Netmask'];
+            var lan_gateway = res['eth0']['Gateway'];
+            $("input[name='lan-address']").val(lan_address);
+            $("input[name='lan-netmask']").val(lan_netmask);
+            $("input[name='lan-gateway']").val(lan_gateway);
+            console.log("eth0")
+
+        }
+        else
+        {
+            $("input[name='lan-address']").val("");
+            $("input[name='lan-netmask']").val("");
+            $("input[name='lan-gateway']").val("");
+        }
+        if(res.hasOwnProperty("eth1"))
+        {
+            var wan_dhcpen =  res['eth1']['Method'];
+            var wan_address =  res['eth1']['Address'];
+            var wan_netmask =  res['eth1']['Netmask'];
+            var wan_gateway =  res['eth1']['Gateway'];
+            console.log("eth1")
+
+            $("input[name='wan-address']").val(wan_address);
+            $("input[name='wan-netmask']").val(wan_netmask);
+            $("input[name='wan-gateway']").val(wan_gateway);
+
+            if(wan_dhcpen === 'dhcp') {
+
+                $("input[type='radio'][name='wan-dhcpen'][value='0']").attr("checked", true);
+                $("input[type='radio'][name='wan-dhcpen'][value='1']").removeAttr("checked");
+                $('span[class=is-invalid]').hide();
+               $("#wan-address").attr("readonly","readonly");
+               $("#wan-gateway").attr("readonly","readonly");
+               $("#wan-netmask").attr("readonly","readonly");
+               {#$("#wan-address").css({"border": "none"});#}
+               $("#wan-address").addClass("b-a-0");
+               $("#wan-gateway").addClass("b-a-0");
+               $("#wan-netmask").addClass("b-a-0");
+            }
+            else
+            {
+
+                $("input[type='radio'][name='wan-dhcpen'][value='1']").attr("checked", true);
+                $("input[type='radio'][name='wan-dhcpen'][value='0']").removeAttr("checked");
+            }
+        }
+        else
+        {
+            $("input[name='wan-address']").val("");
+            $("input[name='wan-netmask']").val("");
+            $("input[name='wan-gateway']").val("");
+        }
+
+    };
+    function isIP(ipstr){
+        var reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/g;
+        return ipstr.match(reg);
+    };
+
+    $(document).ready(function() {
+
+        socket.on('connect', function (res) {
+                socket.emit("get_ethernet_config",{data:"connect"});
+        });
+        socket.on('ethernet_config', function (res) {
+                displayData(res);
+        });
+        socket.on('ethernet_changed', function (res) {
+                socket.emit("get_ethernet_config",{data:"connect"});
+        });
+        //displayData();
+
+        $('input[type=radio][name=wan-dhcpen]').change(function(){
+           if(this.value === '0'){
+               $('span[class=is-invalid]').hide();
+               $("#wan-address").attr("readonly","readonly");
+               $("#wan-gateway").attr("readonly","readonly");
+               $("#wan-netmask").attr("readonly","readonly");
+               {#$("#wan-address").css({"border": "none"});#}
+               $("#wan-address").addClass("b-a-0");
+               $("#wan-gateway").addClass("b-a-0");
+               $("#wan-netmask").addClass("b-a-0");
+                console.log("dhcp enabled");
+           }
+           else if(this.value === '1'){
+                $("#wan-address").removeAttr("readonly");
+                $("#wan-gateway").removeAttr("readonly");
+                $("#wan-netmask").removeAttr("readonly");
+                {#$("#wan-address").css({"border":"1px solid #c8ced3"});#}
+                $("#wan-address").removeClass("b-a-0");
+                $("#wan-gateway").removeClass("b-a-0");
+                $("#wan-netmask").removeClass("b-a-0");
+                console.log("dhcp disabled");
+           }
+        });
+
+        $("#lan_get_btn").on("click", function () {
+            console.log("get lan settings");
+            socket.emit("get_ethernet_config",{data:"lan_get_btn click"});
+        });
+        $("#wan_get_btn").on("click", function () {
+            console.log("get wan settings");
+            socket.emit("get_ethernet_config",{data:"wan_get_btn click"});
+        });
+        $("#wan_save_btn").on("click",function () {
+
+            if($('input[type=radio][name=wan-dhcpen]:checked').val() === '1')
+            {
+                var eth_radio = 'manual';
+            }
+            else
+            {
+                var eth_radio = 'dhcp';
+            }
+
+            console.log(eth_radio)
+            if(!isIP($("#wan-address").val()) || !isIP($("#wan-gateway").val()) || !isIP($("#wan-netmask").val()))
+            {
+                alert("Input is not an IP address format!")
+                return
+            }
+
+            var wan_address = $("#wan-address").val();
+            var wan_gateway = $("#wan-gateway").val();
+            var wan_netmask = $("#wan-netmask").val();
+
+            var data = {
+                data: JSON.stringify({
+                    'Interface': 'eth1',
+                    'Method': eth_radio,
+                    'Address': wan_address,
+                    'Netmask': wan_netmask,
+                    'Gateway': wan_gateway
+                }),
+            };
+            console.log (data);
+            socket.emit("set_ethernet_config",data);
+        });
+        $("#lan_save_btn").on("click",function () {
+
+            var setting_message = confirm("Modify the IP address of the LAN port,the current web page will be disconnected.\n The board must be restarted to access the web page with a new IP address.")
+            if (setting_message == true){
+                if($('input[type=radio][name=lan-dhcpen]:checked').val() ==='1')
+                {
+                    var eth_radio = 'manual';
+                }
+                else
+                {
+                    var eth_radio = 'dhcp';
+                }
+
+                console.log(eth_radio)
+                var lan_address = $("#lan-address").val();
+                var lan_gateway = $("#lan-gateway").val();
+                var lan_netmask = $("#lan-netmask").val();
+
+                var data = {
+                    data: JSON.stringify({
+                        'Interface': 'eth0',
+                        'Method': eth_radio,
+                        'Address': lan_address,
+                        'Netmask': lan_netmask,
+                        'Gateway': lan_gateway
+                    }),
+                };
+                console.log (data);
+                socket.emit("set_ethernet_config",data);
+            }
+            else
+                return;
+
+
+        });
+
+    });
+
+    </script>
+{% endblock %}

@@ -1,0 +1,6 @@
+
+[:python_version=="2.6"]
+ordereddict
+
+[locale]
+Babel>=1.3

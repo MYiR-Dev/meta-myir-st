@@ -1,0 +1,12 @@
+[Unit]
+Description=myd-ya157c-emmc
+After=systemd-networkd.service
+
+
+[Service]
+Type=forking
+ExecStart=/bin/sh /usr/bin/emmc_mount.sh
+
+[Install]
+WantedBy=multi-user.target
+Alias=myd-ya157c.service

@@ -1,0 +1,127 @@
+{% extends "appbuilder/base.html" %}
+{% block page_title %}{{_("Mobile Network Settings")}}{% endblock %}
+{% block breadcrumb %}
+ <!-- Breadcrumb-->
+<ol class="breadcrumb" style="margin-bottom:1px; padding: 0.25rem">
+          <li class="breadcrumb-item"><a href="/"><i class="fa fa-home"></i> {{_("Home")}}</a></li>
+          <li class="breadcrumb-item">
+            <a href="#">{{_("Settings")}}</a>
+          </li>
+          <li class="breadcrumb-item active">{{_("Mobile Network Settings")}}</li>
+          <!-- Breadcrumb Menu-->
+{#          <li class="breadcrumb-menu d-md-down-none">#}
+{#            <div class="btn-group" role="group" aria-label="Button group">#}
+{#              <a class="btn" href="#">#}
+{#                <i class="icon-speech"></i>#}
+{#              </a>#}
+{#              <a class="btn" href="..">#}
+{#                <i class="icon-graph"></i>  Dashboard</a>#}
+{#              <a class="btn" href="#">#}
+{#                <i class="icon-settings"></i>  Settings</a>#}
+{#            </div>#}
+{#          </li>#}
+        </ol>
+{% endblock %}
+{% block content %}
+<div class="row">
+                            <div class="col-md-12">
+                                <div class="card portlet light form-fit">
+                                    <div class="card-header portlet-title">
+{#                                        <div class="caption">#}
+                                            <i class="fa fa-power-off  font-red"></i> {{ _("4G Switch") }}
+{#                                        </div>#}
+                                        <div class="card-header-actions">
+                                              <label class="switch switch-label switch-pill switch-primary" style="margin: 0">
+                                                <input class="switch-input" id="4g-switch" type="checkbox" />
+                                                <span class="switch-slider" data-checked="{{ _("On") }}" data-unchecked="{{ _("Off") }}"></span>
+                                              </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <ul class="nav nav-tabs" role="tablist">
+                                     <li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab">{{ _("4G INFO")}}:</a></li>
+
+                                </ul>
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active" id="home">
+                                        <div class="row">
+                                        <label class="col-md-1 col-form-label" for="text-input">
+                                            <h6>{{_("IP Address")}}:</h6>
+                                        </label>
+                                        <div class="col-xs-11 text-left">
+                                                <input class="form-control" id="4g_ip_info" type="text" name="4g_info_input"  placeholder="0.0.0.0"  required=""/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-md-1 col-form-label" for="text-input">
+                                            <h6>{{_("Net Mask")}}:</h6>
+                                        </label>
+                                        <div class="col-xs-11 text-left">
+                                            <div class="chat-body clearfix">
+                                                <input class="form-control" id="4g_mask_info" type="text" name="4g_info_input"  placeholder="0.0.0.0"  required=""/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label  class="col-md-1 col-form-label" for="text-input">
+                                            <h6>{{_("P-t-p")}}:</h6>
+                                        </label>
+                                        <div class="col-xs-11 text-left">
+                                            <div class="chat-body clearfix">
+                                                <input class="form-control" id="4g_ptp_info" type="text" name="4g_info_input" placeholder="0.0.0.0"  required=""/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+
+                        </div>
+</div>
+
+{% endblock %}
+{% block add_tail_js %}
+    <script type="text/javascript" charset="utf-8">
+        function displayData(res){
+
+            $("#4g_ip_info").val(res["ip"]);
+            $("#4g_mask_info").val(res["mask"]);
+            $("#4g_ptp_info").val(res["ptp"]);
+        };
+        function clearData(){
+            $("#4g_ip_info").val("0.0.0.0");
+            $("#4g_mask_info").val("0.0.0.0");
+            $("#4g_ptp_info").val("0.0.0.0");
+        };
+        $(document).ready(function() {
+            socket.emit("get_4g_status",{data:"get_4g_status "});
+
+            $("#4g-switch").click(function () {
+
+                if($("#4g-switch").is(":checked")){
+
+                    socket.emit("4g_connect",{data:"4g_connect click"});
+                }
+                else
+                {
+                    socket.emit("4g_disconnect",{data:"4g_disconnect click"});
+                    clearData();
+                }
+            });
+            socket.on('mobile_status', function (mobile_status) {
+
+                if(mobile_status["switch"] == "on"){
+                     $("#4g-switch").prop("checked", true)
+                     if(mobile_status["ip"] !== "" )
+                        displayData(mobile_status);
+                }
+                else
+                {
+                    $("#4g-switch").prop("checked",false);
+                    clearData();
+                }
+
+            });
+        });
+    </script>
+{% endblock %}

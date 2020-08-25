@@ -1,0 +1,29 @@
+{% extends "appbuilder/base.html" %}
+
+{% block content %}
+{#<h2><center>{{_('Welcome')}} <center></h2>#}
+
+<div class="row" class="col-md-12" id="img_div">
+
+</div>
+{% endblock %}
+
+{% block add_tail_js %}
+    {{ super() }}
+ <script type="text/javascript" charset="utf-8">
+
+        $(document).ready(function() {
+             // Event handler for server sent data.
+            // The callback function is invoked whenever the server emits data
+            // to the client. The data is then displayed in the "Received"
+            // section of the page.
+            var img
+            var str = $("#local_languages").text();
+            if (str.search("Chinese") != -1 )
+                img = "<img src=\"img/welcome_zh.png\" id=\"myir\" style=\"background: #eff7ff;position:relative;width:100%;height:100%;\" >";
+            else
+                img =  "<img src=\"img/welcome_en.png\" id=\"myir\" style=\"background: #eff7ff;position:relative;width:100%;height:100%;\" >";
+            $("#img_div").append(img);
+        });
+</script>
+{% endblock %}

@@ -1,0 +1,9 @@
+
+test myt-ya157c pcb
+You need to modify the kernel
+
+path:layers/meta-myir-st/recipes-kernel/linux/linux-myir_4.19.bb
+SRC_URI += " \
+            git://e.coding.net/lichang70/pcb-kernel.git;protocol=https;branch=master"
+
+SRCREV= "dfae075a8edc045d4955c21727e5411a14c77cf7"

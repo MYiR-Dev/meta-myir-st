@@ -1,0 +1,190 @@
+{% extends "appbuilder/base.html" %}
+{% block page_title %}{{_("System Information")}}{% endblock %}
+{% block breadcrumb %}
+ <!-- Breadcrumb-->
+<ol class="breadcrumb" style="margin-bottom:1px; padding: 0.25rem">
+          <li class="breadcrumb-item"><a href="/"><i class="fa fa-home"></i> {{_("Home")}}</a></li>
+          <li class="breadcrumb-item">
+            <a href="#">{{_("System")}}</a>
+          </li>
+          <li class="breadcrumb-item active">{{_("System Information")}}</li>
+          <!-- Breadcrumb Menu-->
+{#          <li class="breadcrumb-menu d-md-down-none">#}
+{#            <div class="btn-group" role="group" aria-label="Button group">#}
+{#              <a class="btn" href="#">#}
+{#                <i class="icon-speech"></i>#}
+{#              </a>#}
+{#              <a class="btn" href="..">#}
+{#                <i class="icon-graph"></i>  Dashboard</a>#}
+{#              <a class="btn" href="#">#}
+{#                <i class="icon-settings"></i>  Settings</a>#}
+{#            </div>#}
+{#          </li>#}
+        </ol>
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-list fa-fw"></i> {{ _("Hardware Information") }}
+        </div>
+        <div class="card-body">
+                <div class="row">
+                    <div class="col-xs-2  text-right">
+                        <h4>{{ _("Manufacture") }}:</h4>
+                    </div>
+                    <div class="col-xs-10 text-left">
+                        <ul class="chat">
+                        <li class="right ">
+                        <div class="chat-body">
+                            <h4 class="middle text-muted">{{ _("MYIR Electronics Limited.") }}</h4>
+                        </div>
+                        </li>
+                        </ul>
+                    </div>
+                  </div>
+                <div class="row">
+                    <div class="col-xs-2   text-right">
+                        <h4>{{ _("Model") }}:</h4>
+                    </div>
+                    <div class="col-xs-10 text-left">
+                        <ul class="chat">
+                        <li class="right ">
+                        <div class="chat-body ">
+                            <h4 class="middle text-muted">MYD-YA157</h4>
+                        </div>
+                        </li>
+                        </ul>
+                    </div>
+                  </div>
+                <div class="row">
+                    <div class="col-xs-2   text-right">
+                        <h4>{{ _("Processor") }}:</h4>
+                    </div>
+                    <div class="col-xs-10 text-left">
+                        <ul class="chat">
+                        <li class="right ">
+                        <div class="chat-body ">
+                            <h4 class="middle text-muted">ST STM32MP157</h4>
+                        </div>
+                        </li>
+                        </ul>
+                    </div>
+                  </div>
+                <div class="row">
+                    <div class="col-xs-2  text-right">
+                        <h4>{{ _("Memory") }}:</h4>
+                    </div>
+                    <div class="col-xs-10 text-left">
+                        <ul class="chat">
+                        <li class="right ">
+                        <div class="chat-body ">
+                            <h4 class="middle text-muted">{{ appbuilder.app.memory_size}}</h4>
+                        </div>
+                        </li>
+                        </ul>
+                    </div>
+                  </div>
+                <div class="row">
+                    <div class="col-xs-2  text-right">
+                        <h4>{{ _("Storage") }}:</h4>
+                    </div>
+                    <div class="col-xs-4 text-left">
+                        <ul class="chat">
+                        <li class="right ">
+
+                        <div class="chat-body ">
+                            <h4 class="middle  text-muted">{{ appbuilder.app.storage_size}}</h4>
+                        </div>
+
+                        </li>
+                        </ul>
+                    </div>
+                  </div>
+                <div>
+                    <span class="chat-img pull-right">
+                          <img src="{{ url_for('serveStaticResource', filename='img/logo_myir.png')  }}" alt="User Avatar" class="" />
+                    </span>
+                  </div></div>
+      </div>
+    </div>
+  </div>
+<!-- /.row -->
+<div class="row">
+<div class="col-sm-12 col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-list fa-fw"></i> {{ _("Software Information") }}
+        </div>
+        <div class="card-body">
+                <div class="row">
+                    <div class="col-xs-2  text-right">
+                        <h4>{{ _("Firmware Version") }}:</h4>
+                    </div>
+                    <div class="col-xs-10 text-left">
+                        <ul class="chat">
+                        <li class="right">
+                        <div class="chat-body ">
+                            <h4 class="middle text-muted">MEasy IOT V1.0</h4>
+                        </div>
+                        </li>
+                        </ul>
+                    </div>
+                  </div>
+                <div class="row">
+                    <div class="col-xs-2   text-right">
+                        <h4>{{ _("Linux Kernel Version") }}:</h4>
+                    </div>
+                    <div class="col-xs-10 text-left">
+                        <ul class="chat">
+                        <li class="right ">
+                        <div class="chat-body ">
+                            <h4 class="middle text-muted">Kernel 4.19.9</h4>
+                        </div>
+                        </li>
+                        </ul>
+                    </div>
+                  </div>
+                <div class="row">
+                    <div class="col-xs-2 text-right">
+                        <h4>{{ _("Bootloader Version") }}:</h4>
+                    </div>
+                    <div class="col-xs-10 text-left">
+                        <ul class="chat">
+                        <li class="right ">
+                        <div class="chat-body ">
+                            <h4 class="middle text-muted">U-boot-2018.11</h4>
+                        </div>
+                        </li>
+                        </ul>
+                    </div>
+                  </div>
+                <div class="row">
+                    <div class="col-xs-2  text-right">
+                        <h4>{{ _("Compiler Version") }}:</h4>
+                    </div>
+                    <div class="col-xs-4 text-left">
+                        <ul class="chat">
+                        <li class="right ">
+
+                        <div class="chat-body ">
+                            <h4 class="middle text-muted">Arm-linux-gcc v7.2</h4>
+                        </div>
+
+                        </li>
+                        </ul>
+                    </div>
+                  </div>
+                <div>
+                    <span class="chat-img pull-right">
+                <img src="{{ url_for('serveStaticResource', filename='img/logo_linux.jpg')  }}" alt="User Avatar" class="img-circle" />
+                    </span>
+                  </div>
+      </div>
+    </div>
+    </div>
+    <!-- /.col-->
+  </div>
+</div>
+{% endblock %}

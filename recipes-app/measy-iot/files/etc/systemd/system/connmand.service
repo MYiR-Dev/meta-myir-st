@@ -1,0 +1,13 @@
+[Unit]
+Description=connman daemon
+
+[Service]
+Type=dbus
+BusName=net.connman
+ExecStart=/usr/bin/connmand -n
+
+
+[Install]
+WantedBy=multi-user.target
+Alias=connmand.service
+

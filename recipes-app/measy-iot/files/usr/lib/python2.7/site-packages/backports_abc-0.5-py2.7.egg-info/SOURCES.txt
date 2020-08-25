@@ -1,0 +1,12 @@
+CHANGES.rst
+LICENSE
+MANIFEST.in
+README.rst
+backports_abc.py
+setup.cfg
+setup.py
+tests.py
+backports_abc.egg-info/PKG-INFO
+backports_abc.egg-info/SOURCES.txt
+backports_abc.egg-info/dependency_links.txt
+backports_abc.egg-info/top_level.txt

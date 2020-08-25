@@ -1,0 +1,18 @@
+Available images for OpenSTLinux layers are:
+
+  - The system based on QT framework
+
+      myir-image-full         -   MYiR HMI demo of image based on QT framework   (require 'openstlinux-eglfs' distro)
+
+
+  - The system based on OpenSTLinux design supports YA157C series products
+
+      myir-image-weston       -   OpenSTLinux weston image with basic Wayland support (if enable in distro)
+     
+      myir-image-measy-iot    -   This system is based on OpenSTLinux core image
+
+
+  - Other OpenSTLinux images:
+
+      myir-image-core         -   OpenSTLinux core image
+      		and more images are available on meta-myir-st/recipes-myir/images.

@@ -1,0 +1,1155 @@
+# Spanish translations for PROJECT.
+# Copyright (C) 2019 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2019-12-05 19:23+0800\n"
+"PO-Revision-Date: 2019-02-19 15:38+0800\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: app/templates/404.html:57
+msgid "Page not found"
+msgstr ""
+
+#: app/templates/appbuilder/baselayout.html:191
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/baselib.html:115
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/navbar_right.html:37
+msgid "Profile"
+msgstr ""
+
+#: app/templates/appbuilder/baselayout.html:206
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/baselib.html:116
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/navbar_right.html:38
+msgid "Logout"
+msgstr ""
+
+#: app/templates/appbuilder/baselayout.html:211
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/baselib.html:122
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/navbar_right.html:43
+msgid "Login"
+msgstr ""
+
+#: app/templates/appbuilder/baselayout.html:229
+#: app/templates/measy/document.html:6 app/templates/measy/ethernet.html:6
+#: app/templates/measy/iec.html:6 app/templates/measy/mobile.html:6
+#: app/templates/measy/mqtt.html:22 app/templates/measy/sysinfo.html:6
+#: app/templates/measy/sysupgrade.html:6 app/templates/measy/wifi.html:6
+msgid "Home"
+msgstr ""
+
+#: app/templates/appbuilder/baselayout.html:233
+#: app/templates/measy/sysinfo.html:8 app/templates/measy/sysupgrade.html:8
+msgid "System"
+msgstr ""
+
+#: app/templates/appbuilder/baselayout.html:236
+#: app/templates/measy/sysinfo.html:2 app/templates/measy/sysinfo.html:10
+msgid "System Information"
+msgstr ""
+
+#: app/templates/appbuilder/baselayout.html:246
+#: app/templates/measy/ethernet.html:8 app/templates/measy/mobile.html:8
+#: app/templates/measy/wifi.html:8
+msgid "Settings"
+msgstr ""
+
+#: app/templates/appbuilder/baselayout.html:249
+#: app/templates/measy/ethernet.html:2 app/templates/measy/ethernet.html:10
+#: app/templates/measy/ethernet.html:30
+msgid "Ethernet Settings"
+msgstr ""
+
+#: app/templates/appbuilder/baselayout.html:255 app/templates/measy/wifi.html:2
+#: app/templates/measy/wifi.html:10
+msgid "WiFi Settings"
+msgstr ""
+
+#: app/templates/appbuilder/baselayout.html:261
+#: app/templates/measy/mobile.html:2 app/templates/measy/mobile.html:10
+msgid "Mobile Network Settings"
+msgstr ""
+
+#: app/templates/appbuilder/baselayout.html:265 app/templates/measy/iec.html:8
+#: app/templates/measy/mqtt.html:24
+msgid "Applications"
+msgstr ""
+
+#: app/templates/appbuilder/baselayout.html:268 app/templates/measy/mqtt.html:2
+#: app/templates/measy/mqtt.html:26
+msgid "MQTT Applicaton"
+msgstr ""
+
+#: app/templates/appbuilder/baselayout.html:274 app/templates/measy/iec.html:2
+#: app/templates/measy/iec.html:10
+msgid "IEC61850 Application"
+msgstr ""
+
+#: app/templates/appbuilder/baselayout.html:278
+#: app/templates/appbuilder/baselayout.html:281
+#: app/templates/measy/document.html:2 app/templates/measy/document.html:8
+msgid "Documents"
+msgstr ""
+
+#: app/templates/appbuilder/general/confirm.html:6
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/confirm.html:6
+msgid "User confirmation needed"
+msgstr ""
+
+#: app/templates/appbuilder/general/lib.html:40
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/lib.html:40
+msgid "Actions"
+msgstr ""
+
+#: app/templates/appbuilder/general/lib.html:65
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/lib.html:75
+msgid "Page size"
+msgstr ""
+
+#: app/templates/appbuilder/general/lib.html:83
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/lib.html:93
+msgid "Order by"
+msgstr ""
+
+#: app/templates/appbuilder/general/lib.html:263
+#: venv/Lib/site-packages/flask_appbuilder/messages.py:11
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/lib.html:273
+msgid "Save"
+msgstr ""
+
+#: app/templates/appbuilder/general/lib.html:280
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/lib.html:290
+msgid "Record Count"
+msgstr ""
+
+#: app/templates/appbuilder/general/lib.html:303
+#: app/templates/appbuilder/model/list.html:8
+#: venv/Lib/site-packages/flask_appbuilder/messages.py:9
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/charts/chart.html:8
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/charts/chart_time.html:10
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/charts/jsonchart.html:8
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/lib.html:313
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/model/list.html:8
+msgid "Search"
+msgstr ""
+
+#: app/templates/appbuilder/general/lib.html:310
+#: venv/Lib/site-packages/flask_appbuilder/messages.py:10
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/lib.html:320
+msgid "Back"
+msgstr ""
+
+#: app/templates/appbuilder/general/lib.html:318
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/lib.html:328
+msgid "Add a new record"
+msgstr ""
+
+#: app/templates/appbuilder/general/lib.html:325
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/lib.html:335
+msgid "Edit record"
+msgstr ""
+
+#: app/templates/appbuilder/general/lib.html:332
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/lib.html:342
+msgid "Show record"
+msgstr ""
+
+#: app/templates/appbuilder/general/lib.html:338
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/lib.html:348
+msgid "You sure you want to delete this item?"
+msgstr ""
+
+#: app/templates/appbuilder/general/lib.html:339
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/lib.html:349
+msgid "Delete record"
+msgstr ""
+
+#: app/templates/appbuilder/general/security/login_db.html:15
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/security/login_db.html:18
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/security/login_ldap.html:16
+msgid "Enter your login and password below"
+msgstr ""
+
+#: app/templates/appbuilder/general/security/login_db.html:23
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/security/login_db.html:20
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/security/login_ldap.html:18
+msgid "Username"
+msgstr ""
+
+#: app/templates/appbuilder/general/security/login_db.html:35
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/security/login_db.html:30
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/security/login_ldap.html:27
+msgid "Password"
+msgstr ""
+
+#: app/templates/appbuilder/general/security/login_db.html:42
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/security/login_db.html:46
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/security/login_ldap.html:40
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/security/login_oauth.html:56
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/security/login_oid.html:118
+msgid "Sign In"
+msgstr ""
+
+#: app/templates/appbuilder/general/security/login_db.html:45
+msgid "Forgot password"
+msgstr ""
+
+#: app/templates/appbuilder/general/security/login_db.html:55
+msgid "Tips"
+msgstr ""
+
+#: app/templates/appbuilder/general/security/login_db.html:57
+msgid "Demo User"
+msgstr ""
+
+#: app/templates/appbuilder/general/security/login_db.html:58
+msgid "Demo Password"
+msgstr ""
+
+#: app/templates/appbuilder/general/widgets/list_carousel.html:50
+#: app/templates/appbuilder/general/widgets/list_master.html:17
+#: venv/Lib/site-packages/flask_appbuilder/messages.py:14
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/widgets/base_list.html:38
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/widgets/list_carousel.html:50
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/widgets/list_master.html:17
+msgid "No records found"
+msgstr ""
+
+#: app/templates/appbuilder/general/widgets/search.html:7
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/widgets/search.html:7
+msgid "Add Filter"
+msgstr ""
+
+#: app/templates/appbuilder/model/edit.html:9
+#: app/templates/appbuilder/model/show.html:16
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/model/edit.html:9
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/model/show.html:9
+msgid "Detail"
+msgstr ""
+
+#: app/templates/measy/ethernet.html:41 app/templates/measy/ethernet.html:43
+#: app/templates/measy/ethernet.html:61
+msgid "LAN"
+msgstr ""
+
+#: app/templates/measy/ethernet.html:48 app/templates/measy/ethernet.html:50
+#: app/templates/measy/ethernet.html:136
+msgid "WAN"
+msgstr ""
+
+#: app/templates/measy/ethernet.html:61 app/templates/measy/ethernet.html:136
+msgid ""
+"If DHCP is supported, users can choose Dynamic IP address, or users "
+"should set static IP address below."
+msgstr ""
+
+#: app/templates/measy/ethernet.html:76
+msgid "[DHCP is not supported on LAN!]"
+msgstr ""
+
+#: app/templates/measy/ethernet.html:81 app/templates/measy/ethernet.html:151
+#: app/templates/measy/mobile.html:50
+msgid "IP Address"
+msgstr ""
+
+#: app/templates/measy/ethernet.html:94 app/templates/measy/ethernet.html:164
+#: app/templates/measy/mobile.html:58
+msgid "Net Mask"
+msgstr ""
+
+#: app/templates/measy/ethernet.html:107 app/templates/measy/ethernet.html:177
+msgid "Gateway"
+msgstr ""
+
+#: app/templates/measy/ethernet.html:123 app/templates/measy/ethernet.html:193
+msgid "Setting"
+msgstr ""
+
+#: app/templates/measy/ethernet.html:125 app/templates/measy/ethernet.html:195
+msgid "Get"
+msgstr ""
+
+#: app/templates/measy/iec.html:33
+msgid "ADC"
+msgstr ""
+
+#: app/templates/measy/iec.html:48
+msgid "ADC1"
+msgstr ""
+
+#: app/templates/measy/iec.html:55
+msgid "ADC2"
+msgstr ""
+
+#: app/templates/measy/iec.html:62
+msgid "ADC3"
+msgstr ""
+
+#: app/templates/measy/iec.html:69
+msgid "ADC4"
+msgstr ""
+
+#: app/templates/measy/iec.html:80
+msgid "UPDATE"
+msgstr ""
+
+#: app/templates/measy/iec.html:86
+msgid "Guide"
+msgstr ""
+
+#: app/templates/measy/iec.html:86
+msgid "Press update to send adc value to IEC clients."
+msgstr ""
+
+#: app/templates/measy/iec.html:102
+msgid "LED"
+msgstr ""
+
+#: app/templates/measy/iec.html:111
+msgid "LED Name"
+msgstr ""
+
+#: app/templates/measy/iec.html:112
+msgid "LED Position"
+msgstr ""
+
+#: app/templates/measy/iec.html:113
+msgid "LED Status"
+msgstr ""
+
+#: app/templates/measy/iec.html:124 app/templates/measy/iec.html:135
+#: app/templates/measy/mobile.html:36 app/templates/measy/mqtt.html:55
+#: app/templates/measy/wifi.html:38
+msgid "On"
+msgstr ""
+
+#: app/templates/measy/iec.html:124 app/templates/measy/iec.html:135
+#: app/templates/measy/mobile.html:36 app/templates/measy/mqtt.html:55
+#: app/templates/measy/wifi.html:38
+msgid "Off"
+msgstr ""
+
+#: app/templates/measy/mobile.html:31
+msgid "4G Switch"
+msgstr ""
+
+#: app/templates/measy/mobile.html:43
+msgid "4G INFO"
+msgstr ""
+
+#: app/templates/measy/mobile.html:68
+msgid "P-t-p"
+msgstr ""
+
+#: app/templates/measy/mqtt.html:50
+msgid "MQTT Server"
+msgstr ""
+
+#: app/templates/measy/mqtt.html:61
+msgid "Client ID"
+msgstr ""
+
+#: app/templates/measy/mqtt.html:70 app/templates/measy/mqtt.html:257
+#: app/templates/measy/mqtt.html:294 app/templates/measy/mqtt.html:327
+#: app/templates/measy/mqtt.html:328 app/templates/measy/wifi.html:197
+msgid "CONNECT"
+msgstr ""
+
+#: app/templates/measy/mqtt.html:71 app/templates/measy/wifi.html:202
+msgid "DISCONNECT"
+msgstr ""
+
+#: app/templates/measy/mqtt.html:75
+msgid "Server Host"
+msgstr ""
+
+#: app/templates/measy/mqtt.html:82
+msgid "Server Port"
+msgstr ""
+
+#: app/templates/measy/mqtt.html:89 app/templates/measy/mqtt.html:217
+msgid "QOS"
+msgstr ""
+
+#: app/templates/measy/mqtt.html:100
+msgid "Retain"
+msgstr ""
+
+#: app/templates/measy/mqtt.html:103
+msgid "True"
+msgstr ""
+
+#: app/templates/measy/mqtt.html:104
+msgid "False"
+msgstr ""
+
+#: app/templates/measy/mqtt.html:126
+msgid "Subscribe"
+msgstr ""
+
+#: app/templates/measy/mqtt.html:131 app/templates/measy/mqtt.html:133
+#: app/templates/measy/mqtt.html:200 app/templates/measy/mqtt.html:202
+msgid "Topic"
+msgstr ""
+
+#: app/templates/measy/mqtt.html:136
+msgid "Sub"
+msgstr ""
+
+#: app/templates/measy/mqtt.html:137
+msgid "Unsub"
+msgstr ""
+
+#: app/templates/measy/mqtt.html:141 app/templates/measy/mqtt.html:210
+#: app/templates/measy/mqtt.html:212
+msgid "Message"
+msgstr ""
+
+#: app/templates/measy/mqtt.html:146
+msgid "List all the messages received from the subscribed topics."
+msgstr ""
+
+#: app/templates/measy/mqtt.html:170
+msgid "Clear"
+msgstr ""
+
+#: app/templates/measy/mqtt.html:190
+msgid "Publish Message"
+msgstr ""
+
+#: app/templates/measy/mqtt.html:206
+msgid "Publish"
+msgstr ""
+
+#: app/templates/measy/sysinfo.html:30
+msgid "Hardware Information"
+msgstr ""
+
+#: app/templates/measy/sysinfo.html:35
+msgid "Manufacture"
+msgstr ""
+
+#: app/templates/measy/sysinfo.html:41
+msgid "MYIR Electronics Limited."
+msgstr ""
+
+#: app/templates/measy/sysinfo.html:49
+msgid "Model"
+msgstr ""
+
+#: app/templates/measy/sysinfo.html:63
+msgid "Processor"
+msgstr ""
+
+#: app/templates/measy/sysinfo.html:77
+msgid "Memory"
+msgstr ""
+
+#: app/templates/measy/sysinfo.html:91
+msgid "Storage"
+msgstr ""
+
+#: app/templates/measy/sysinfo.html:118
+msgid "Software Information"
+msgstr ""
+
+#: app/templates/measy/sysinfo.html:123
+msgid "Firmware Version"
+msgstr ""
+
+#: app/templates/measy/sysinfo.html:137
+msgid "Linux Kernel Version"
+msgstr ""
+
+#: app/templates/measy/sysinfo.html:151
+msgid "Bootloader Version"
+msgstr ""
+
+#: app/templates/measy/sysinfo.html:165
+msgid "Compiler Version"
+msgstr ""
+
+#: app/templates/measy/sysupgrade.html:2 app/templates/measy/sysupgrade.html:10
+msgid "System Upgrade"
+msgstr ""
+
+#: app/templates/measy/wifi.html:32
+msgid "WiFi Switch"
+msgstr ""
+
+#: app/templates/measy/wifi.html:54
+msgid "Available WiFi List."
+msgstr ""
+
+#: app/templates/measy/wifi.html:60
+msgid "SCAN"
+msgstr ""
+
+#: app/templates/measy/wifi.html:98
+msgid "Wifi Passwd"
+msgstr ""
+
+#: app/templates/measy/wifi.html:110
+msgid "Ok"
+msgstr ""
+
+#: app/templates/measy/wifi.html:111
+msgid "Cancle"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_appbuilder/fields.py:131
+#: venv/Lib/site-packages/flask_appbuilder/fields.py:133
+#: venv/Lib/site-packages/flask_appbuilder/fields.py:185
+#: venv/Lib/site-packages/flask_appbuilder/fields.py:192
+#: venv/Lib/site-packages/flask_appbuilder/fields.py:242
+#: venv/Lib/site-packages/wtforms/ext/appengine/fields.py:87
+#: venv/Lib/site-packages/wtforms/ext/appengine/fields.py:164
+#: venv/Lib/site-packages/wtforms/ext/appengine/fields.py:166
+#: venv/Lib/site-packages/wtforms/ext/django/fields.py:95
+#: venv/Lib/site-packages/wtforms/ext/sqlalchemy/fields.py:125
+#: venv/Lib/site-packages/wtforms/ext/sqlalchemy/fields.py:127
+#: venv/Lib/site-packages/wtforms/ext/sqlalchemy/fields.py:180
+#: venv/Lib/site-packages/wtforms/ext/sqlalchemy/fields.py:185
+#: venv/Lib/site-packages/wtforms/fields/core.py:475
+msgid "Not a valid choice"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_appbuilder/fieldwidgets.py:153
+#: venv/Lib/site-packages/flask_appbuilder/fieldwidgets.py:172
+msgid "Select Value"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_appbuilder/messages.py:12
+#: venv/Lib/site-packages/flask_wtf/file.py:51
+#: venv/Lib/site-packages/wtforms/validators.py:205
+#: venv/Lib/site-packages/wtforms/validators.py:245
+msgid "This field is required."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_appbuilder/messages.py:13
+#: venv/Lib/site-packages/wtforms/fields/core.py:762
+msgid "Not a valid date value"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_appbuilder/upload.py:159
+#: venv/Lib/site-packages/flask_appbuilder/upload.py:211
+msgid "Invalid file extension"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_appbuilder/validators.py:31
+msgid "Already exists."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_appbuilder/models/group.py:26
+msgid "Count of"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_appbuilder/models/group.py:35
+msgid "Sum of"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_appbuilder/models/group.py:44
+msgid "Avg. of"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_appbuilder/security/manager.py:519
+msgid "List Users"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_appbuilder/security/manager.py:521
+msgid "Security"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_appbuilder/security/manager.py:524
+msgid "List Roles"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_appbuilder/security/manager.py:530
+msgid "User's Statistics"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_appbuilder/security/manager.py:536
+msgid "User Registrations"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_appbuilder/security/manager.py:542
+msgid "Base Permissions"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_appbuilder/security/manager.py:545
+msgid "Views/Menus"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_appbuilder/security/manager.py:548
+msgid "Permission on Views/Menus"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/security/activation.html:5
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/index.html:4
+msgid "Welcome"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/charts/chart_time.html:17
+msgid "Group by fields"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/security/activation.html:7
+msgid "Your user is activated you can now proceed to login"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/security/login_db.html:49
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/security/login_oauth.html:59
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/security/login_oid.html:121
+msgid "If you are not already a user, please register"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/security/login_db.html:50
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/security/login_oauth.html:60
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/security/login_oid.html:122
+msgid "Register"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/security/login_oauth.html:44
+msgid "Please choose one of the following providers:"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/security/login_oid.html:89
+msgid "Click on your OpenID provider below"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/security/login_oid.html:101
+msgid "Or enter your OpenID here"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/security/login_oid.html:105
+msgid "Please choose a provider"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/security/login_oid.html:107
+msgid "Enter your OpenID Username"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_appbuilder/templates/appbuilder/general/security/register_oauth.html:15
+msgid "Sign in using:"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_jsonrpc/exceptions.py:35
+msgid "You're lazy..."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_jsonrpc/exceptions.py:93
+msgid "Parse error."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_jsonrpc/exceptions.py:99
+msgid "Invalid Request."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_jsonrpc/exceptions.py:105
+msgid "Method not found."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_jsonrpc/exceptions.py:111
+msgid "Invalid params."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_jsonrpc/exceptions.py:117
+msgid "Internal error."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_jsonrpc/exceptions.py:127
+msgid "JSON-RPC requests must be POST"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_jsonrpc/exceptions.py:133
+msgid "Invalid login credentials"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_jsonrpc/exceptions.py:140
+msgid "Error missed by other execeptions"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_wtf/file.py:85
+msgid "File does not have an approved extension: {extensions}"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_wtf/file.py:90
+msgid "File does not have an approved extension."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:58
+#, python-format
+msgid "Invalid field name '%s'."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:66
+#, python-format
+msgid "Field must be equal to %(other_name)s."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:99
+#, python-format
+msgid "Field must be at least %(min)d character long."
+msgid_plural "Field must be at least %(min)d characters long."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:102
+#, python-format
+msgid "Field cannot be longer than %(max)d character."
+msgid_plural "Field cannot be longer than %(max)d characters."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:105
+#, python-format
+msgid "Field must be between %(min)d and %(max)d characters long."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:141
+#, python-format
+msgid "Number must be at least %(min)s."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:143
+#, python-format
+msgid "Number must be at most %(max)s."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:145
+#, python-format
+msgid "Number must be between %(min)s and %(max)s."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:277
+msgid "Invalid input."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:311
+msgid "Invalid email address."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:352
+msgid "Invalid IP address."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:403
+msgid "Invalid Mac address."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:432
+msgid "Invalid URL."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:452
+msgid "Invalid UUID."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:482
+#, python-format
+msgid "Invalid value, must be one of: %(values)s."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:514
+#, python-format
+msgid "Invalid value, can't be any of: %(values)s."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/csrf/core.py:98
+#: venv/Lib/site-packages/wtforms/ext/csrf/form.py:47
+msgid "Invalid CSRF Token"
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/csrf/session.py:61
+#: venv/Lib/site-packages/wtforms/ext/csrf/session.py:58
+msgid "CSRF token missing"
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/csrf/session.py:69
+#: venv/Lib/site-packages/wtforms/ext/csrf/session.py:66
+msgid "CSRF failed"
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/csrf/session.py:74
+#: venv/Lib/site-packages/wtforms/ext/csrf/session.py:71
+msgid "CSRF token expired"
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/ext/appengine/fields.py:185
+msgid "Not a valid list"
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/ext/appengine/fields.py:204
+msgid "Not a valid integer list"
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/ext/dateutil/fields.py:63
+msgid "Please input a date/time value"
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/ext/dateutil/fields.py:75
+#: venv/Lib/site-packages/wtforms/ext/dateutil/fields.py:83
+msgid "Invalid date/time input"
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/core.py:468
+msgid "Invalid Choice: could not coerce"
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/core.py:501
+msgid "Invalid choice(s): one or more data inputs could not be coerced"
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/core.py:508
+#, python-format
+msgid "'%(value)s' is not a valid choice for this field"
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/core.py:591
+msgid "Not a valid integer value"
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/core.py:657
+msgid "Not a valid decimal value"
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/core.py:684
+msgid "Not a valid float value"
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/core.py:745
+msgid "Not a valid datetime value"
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/core.py:779
+msgid "Not a valid time value"
+msgstr ""
+
+#~ msgid "More"
+#~ msgstr ""
+
+#~ msgid "See All"
+#~ msgstr ""
+
+#~ msgid "Please Input Correct IP Address."
+#~ msgstr ""
+
+#~ msgid "Please Input Correct Netmask Address."
+#~ msgstr ""
+
+#~ msgid "Please Input Correct Gateway Address."
+#~ msgstr ""
+
+#~ msgid "Dynamic IP address."
+#~ msgstr ""
+
+#~ msgid "Static IP address."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Modify the IP address of the LAN"
+#~ " port,the current WEB page will be"
+#~ " disconnected.\n"
+#~ " The board must be restarted to"
+#~ " access the web page with a new"
+#~ " IP address."
+#~ msgstr ""
+
+#~ msgid "Unsubscribe"
+#~ msgstr ""
+
+#~ msgid "Access is Denied"
+#~ msgstr ""
+
+#~ msgid "Group by"
+#~ msgstr ""
+
+#~ msgid "Added Row"
+#~ msgstr ""
+
+#~ msgid "Changed Row"
+#~ msgstr ""
+
+#~ msgid "Deleted Row"
+#~ msgstr ""
+
+#~ msgid "Associated data exists, please delete them first"
+#~ msgstr ""
+
+#~ msgid "Integrity error, probably unique constraint"
+#~ msgstr ""
+
+#~ msgid "General Error"
+#~ msgstr ""
+
+#~ msgid "Contains"
+#~ msgstr ""
+
+#~ msgid "Contains (insensitive)"
+#~ msgstr ""
+
+#~ msgid "Not Contains"
+#~ msgstr ""
+
+#~ msgid "Equal to"
+#~ msgstr ""
+
+#~ msgid "Not Equal to"
+#~ msgstr ""
+
+#~ msgid "Greater than"
+#~ msgstr ""
+
+#~ msgid "Smaller than"
+#~ msgstr ""
+
+#~ msgid "Start with"
+#~ msgstr ""
+
+#~ msgid "Starts with"
+#~ msgstr ""
+
+#~ msgid "Not Starts with"
+#~ msgstr ""
+
+#~ msgid "Relation"
+#~ msgstr ""
+
+#~ msgid "Relation as Many"
+#~ msgstr ""
+
+#~ msgid "Ends with"
+#~ msgstr ""
+
+#~ msgid "Not Ends with"
+#~ msgstr ""
+
+#~ msgid "No Relation"
+#~ msgstr ""
+
+#~ msgid "OpenID"
+#~ msgstr ""
+
+#~ msgid "User Name"
+#~ msgstr ""
+
+#~ msgid "Remember me"
+#~ msgstr ""
+
+#~ msgid "First Name"
+#~ msgstr ""
+
+#~ msgid "Write the user first name or names"
+#~ msgstr ""
+
+#~ msgid "Last Name"
+#~ msgstr ""
+
+#~ msgid "Write the user last name"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Please use a good password policy, "
+#~ "this application does not check this "
+#~ "for you"
+#~ msgstr ""
+
+#~ msgid "Confirm Password"
+#~ msgstr ""
+
+#~ msgid "Please rewrite the password to confirm"
+#~ msgstr ""
+
+#~ msgid "Passwords must match"
+#~ msgstr ""
+
+#~ msgid "Email"
+#~ msgstr ""
+
+#~ msgid "Account activation"
+#~ msgstr ""
+
+#~ msgid "Registration sent to your email"
+#~ msgstr ""
+
+#~ msgid "Not possible to register you at the moment, try again later"
+#~ msgstr ""
+
+#~ msgid "Registration not found"
+#~ msgstr ""
+
+#~ msgid "Fill out the registration form"
+#~ msgstr ""
+
+#~ msgid "List Base Permissions"
+#~ msgstr ""
+
+#~ msgid "Show Base Permission"
+#~ msgstr ""
+
+#~ msgid "Add Base Permission"
+#~ msgstr ""
+
+#~ msgid "Edit Base Permission"
+#~ msgstr ""
+
+#~ msgid "Name"
+#~ msgstr ""
+
+#~ msgid "List View Menus"
+#~ msgstr ""
+
+#~ msgid "Show View Menu"
+#~ msgstr ""
+
+#~ msgid "Add View Menu"
+#~ msgstr ""
+
+#~ msgid "Edit View Menu"
+#~ msgstr ""
+
+#~ msgid "List Permissions on Views/Menus"
+#~ msgstr ""
+
+#~ msgid "Show Permission on Views/Menus"
+#~ msgstr ""
+
+#~ msgid "Add Permission on Views/Menus"
+#~ msgstr ""
+
+#~ msgid "Edit Permission on Views/Menus"
+#~ msgstr ""
+
+#~ msgid "Permission"
+#~ msgstr ""
+
+#~ msgid "View/Menu"
+#~ msgstr ""
+
+#~ msgid "Reset Password Form"
+#~ msgstr ""
+
+#~ msgid "Password Changed"
+#~ msgstr ""
+
+#~ msgid "Edit User Information"
+#~ msgstr ""
+
+#~ msgid "User information changed"
+#~ msgstr ""
+
+#~ msgid "Show User"
+#~ msgstr ""
+
+#~ msgid "Add User"
+#~ msgstr ""
+
+#~ msgid "Edit User"
+#~ msgstr ""
+
+#~ msgid "Full Name"
+#~ msgstr ""
+
+#~ msgid "Is Active?"
+#~ msgstr ""
+
+#~ msgid "Role"
+#~ msgstr ""
+
+#~ msgid "Last login"
+#~ msgstr ""
+
+#~ msgid "Login count"
+#~ msgstr ""
+
+#~ msgid "Failed login count"
+#~ msgstr ""
+
+#~ msgid "Created on"
+#~ msgstr ""
+
+#~ msgid "Created by"
+#~ msgstr ""
+
+#~ msgid "Changed on"
+#~ msgstr ""
+
+#~ msgid "Changed by"
+#~ msgstr ""
+
+#~ msgid "Username valid for authentication on DB or LDAP, unused for OID auth"
+#~ msgstr ""
+
+#~ msgid "It's not a good policy to remove a user, just make it inactive"
+#~ msgstr ""
+
+#~ msgid "The user's email, this will also be used for OID auth"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The user role on the application, "
+#~ "this will associate with a list of"
+#~ " permissions"
+#~ msgstr ""
+
+#~ msgid "Please rewrite the user's password to confirm"
+#~ msgstr ""
+
+#~ msgid "User info"
+#~ msgstr ""
+
+#~ msgid "Personal Info"
+#~ msgstr ""
+
+#~ msgid "Audit Info"
+#~ msgstr ""
+
+#~ msgid "Your user information"
+#~ msgstr ""
+
+#~ msgid "Reset my password"
+#~ msgstr ""
+
+#~ msgid "Reset Password"
+#~ msgstr ""
+
+#~ msgid "User Statistics"
+#~ msgstr ""
+
+#~ msgid "Show Role"
+#~ msgstr ""
+
+#~ msgid "Add Role"
+#~ msgstr ""
+
+#~ msgid "Edit Role"
+#~ msgstr ""
+
+#~ msgid "Permissions"
+#~ msgstr ""
+
+#~ msgid "Copy Role"
+#~ msgstr ""
+
+#~ msgid "Copy the selected roles?"
+#~ msgstr ""
+
+#~ msgid "List of Registration Requests"
+#~ msgstr ""
+
+#~ msgid "Show Registration"
+#~ msgstr ""
+
+#~ msgid "Invalid login. Please try again."
+#~ msgstr ""
+
