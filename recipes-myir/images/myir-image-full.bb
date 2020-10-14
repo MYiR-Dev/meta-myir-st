@@ -7,6 +7,8 @@ inherit core-image distro_features_check
 
 # let's make sure we have a good image..
 #CONFLICT_DISTRO_FEATURES = "x11 wayland"
+REQUIRED_DISTRO_FEATURES = "wayland"
+
 
 IMAGE_LINGUAS = "en-us"
 
@@ -43,7 +45,9 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     packagegroup-framework-tools       \
     \
     packagegroup-framework-core-extra   \
+    packagegroup-framework-tools-extra  \
     \
     packagegroup-framework-sample-qt    \
     packagegroup-framework-sample-qt-extra   \
+    packagegroup-st-demo \
     "

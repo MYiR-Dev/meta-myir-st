@@ -50,6 +50,8 @@ RDEPENDS_packagegroup-framework-tools-base-kernel = "\
     memtester       \
     mtd-utils       \
     v4l-utils       \
+    proftpd	    \
+    vsftpd	    \
     "
 
 SUMMARY_packagegroup-framework-tools-base-network = "Framework tools base components for network"

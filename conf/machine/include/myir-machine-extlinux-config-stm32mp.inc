@@ -5,9 +5,9 @@ UBOOT_EXTLINUX_CONSOLE = "console=${@d.getVar('SERIAL_CONSOLE').split()[1]},${@d
 # Define default FDTDIR for all configs
 UBOOT_EXTLINUX_FDTDIR = "/"
 # Define default MENU DESCRIPTION for all configs
-UBOOT_EXTLINUX_MENU_DESCRIPTION = "ya157c-core"
+UBOOT_EXTLINUX_MENU_DESCRIPTION = "stm32mp157c-ya157c-v2"
 # Define default boot config for all config
-UBOOT_EXTLINUX_DEFAULT_LABEL ?= "ya157c-hdmi"
+UBOOT_EXTLINUX_DEFAULT_LABEL ?= "stm32mp157c-ya157c-hdmi-v2"
 # Define default INITRD for all configs
 INITRD_SHORTNAME ??= ""
 UBOOT_EXTLINUX_INITRD ?= "${@bb.utils.contains('COMBINED_FEATURES', 'autoresize', '/${INITRD_SHORTNAME}', '', d)}"
@@ -71,7 +71,7 @@ UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG_target-nand += "${STM32MP_DT_FILES_YA157C}"
 #UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG[stm32mp157f-ev1] += "stm32mp157f-ev1-a7"
 #UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG[stm32mp157f-ev1] += "stm32mp157f-ev1-m4"
 
-UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG[stm32mp157c-ya157c-v2] += "stm32mp157c-ya157c-v2"
+#UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG[stm32mp157c-ya157c-v2] += "stm32mp157c-ya157c-v2"
 UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG[stm32mp157c-ya157c-v2] += "stm32mp157c-ya157c-hdmi-v2"
 UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG[stm32mp157c-ya157c-v2] += "stm32mp157c-ya157c-lcd-v2"
 
@@ -80,8 +80,8 @@ UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG[stm32mp157c-ya157c-v2] += "stm32mp157c-ya157
 # Configure myir labels
 # -----------------------------------------------------------------------------
 #UBOOT_EXTLINUX_MENU_DESCRIPTION_stm32mp157c-ya157c-v2 = "ya157c-core"
-UBOOT_EXTLINUX_MENU_DESCRIPTION_stm32mp157c-ya157c-hdmi-v2 = "ya157c-hdmi"
-UBOOT_EXTLINUX_MENU_DESCRIPTION_stm32mp157c-ya157c-lcd-v2 = "ya157c-lcd"
+UBOOT_EXTLINUX_MENU_DESCRIPTION_stm32mp157c-ya157c-hdmi-v2 = "stm32mp157c-ya157c-hdmi-v2"
+UBOOT_EXTLINUX_MENU_DESCRIPTION_stm32mp157c-ya157c-lcd-v2 = "stm32mp157c-ya157c-lcd-v2"
 #UBOOT_EXTLINUX_FDT_stm32mp157c-ya157c-v2 = "/stm32mp157c-ya157c-v2.dtb"
 UBOOT_EXTLINUX_FDT_stm32mp157c-ya157c-hdmi-v2 = "/stm32mp157c-ya157c-hdmi-v2.dtb"
 UBOOT_EXTLINUX_FDT_stm32mp157c-ya157c-lcd-v2 = "/stm32mp157c-ya157c-lcd-v2.dtb"

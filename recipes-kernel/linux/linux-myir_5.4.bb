@@ -17,14 +17,14 @@ S = "${WORKDIR}/git"
 BBCLASSEXTEND = "devupstream:target"
 
 SRC_URI += " \
-      git://github.com/MYiR-Dev/myir-st-linux.git;protocol=https;branch=stm32mp15x-kernel"
+      git://github.com/MYiR-Dev/myir-st-linux.git;protocol=https;branch=develop"
 
-SRCREV= "bd6e22994f1b813b056709443fe81c2e018e7c8a"
+SRCREV= "5670433333e7c72800ecd618852cfd7f646a535d"
 
 #SRC_URI += " \
-#        git://gitee.com/lichang70/stm32mp15xc-kernel.git;protocol=https;branch=stm32mp-ya15xc"
+#        git://gitee.com/lichang70/stm32mp15xc-kernel5.4.git;protocol=https;branch=master"
 
-#SRCREV = "04f1de937c11411d27d5d52ddf3d77c9fc8a3b9f"
+#SRCREV = "b25207f08c5a60d1e300bf3f04f18fb6e3dedfb5"
 
 
 #PV = "${LINUX_VERSION}+${LINUX_SUBVERSION}+${SRCPV}"

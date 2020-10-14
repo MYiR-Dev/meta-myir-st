@@ -122,4 +122,5 @@ RDEPENDS_packagegroup-framework-tools-python3 = "\
     python3-pyyaml      \
     python3-pexpect     \
     python3-evdev       \
+    python3-pip		\
     "
