@@ -3,11 +3,11 @@ LICENSE = "Proprietary"
 
 include recipes-myir/images/myir-image.inc
 
-inherit core-image distro_features_check
+inherit core-image features_check
 
 # let's make sure we have a good image..
-#CONFLICT_DISTRO_FEATURES = "x11 wayland"
-REQUIRED_DISTRO_FEATURES = "wayland"
+CONFLICT_DISTRO_FEATURES = "x11 wayland"
+#REQUIRED_DISTRO_FEATURES = "wayland"
 
 
 IMAGE_LINGUAS = "en-us"
