@@ -67,6 +67,9 @@ RDEPENDS_packagegroup-framework-tools-extra-network = "\
     net-snmp        \
     \
     neard           \
+    lftp	    \
+    samba	    \
+    pv		    \
     "
 
 SUMMARY_packagegroup-framework-tools-extra-audio = "Framework tools extra components for audio"

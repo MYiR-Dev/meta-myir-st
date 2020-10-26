@@ -19,7 +19,7 @@ BBCLASSEXTEND = "devupstream:target"
 SRC_URI += " \
       git://github.com/MYiR-Dev/myir-st-linux.git;protocol=https;branch=develop"
 
-SRCREV= "5670433333e7c72800ecd618852cfd7f646a535d"
+SRCREV= "7a6cb70bf68dfe191b3a7cf25e3f6c77d79e0993"
 
 #SRC_URI += " \
 #        git://gitee.com/lichang70/stm32mp15xc-kernel5.4.git;protocol=https;branch=master"
