@@ -26,6 +26,7 @@ SRC_URI = " \
 	file://quectel-ppp-kill \
 	file://ip-up \
 	file://modeset \
+	file://quectel-CM \
           "
 S_G = "${WORKDIR}"
 
@@ -41,6 +42,7 @@ do_install () {
       install -m 0777 ${S_G}/myt_ya157c_factory ${D}/usr/bin/
       install -m 0777 ${S_G}/myd_ya157c_all ${D}/usr/bin/
       install -m 0777 ${S_G}/quectel* ${D}/etc/ppp/peers/
+      install -m 0777 ${S_G}/quectel-CM ${D}/usr/bin/
       
 }
 
