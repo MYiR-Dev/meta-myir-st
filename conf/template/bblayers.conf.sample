@@ -50,8 +50,9 @@ ADDONSLAYERS += "${@'${OEROOT}/layers/meta-linaro/meta-linaro-toolchain' if os.p
 ADDONSLAYERS += "${@'${OEROOT}/layers/meta-openembedded/meta-networking' if os.path.isfile('${OEROOT}/layers/meta-linaro/meta-linaro/conf/layer.conf') else ''}"
 
 # Qt5
-ADDONSLAYERS += "${@'${OEROOT}/layers/meta-qt5' if os.path.isfile('${OEROOT}/layers/meta-qt5/conf/layer.conf') else ''}"
+#ADDONSLAYERS += "${@'${OEROOT}/layers/meta-qt5' if os.path.isfile('${OEROOT}/layers/meta-qt5/conf/layer.conf') else ''}"
 
+ADDONSLAYERS += "${@'${OEROOT}/layers/meta-swupdate' if os.path.isfile('${OEROOT}/layers/meta-swupdate/conf/layer.conf') else ''}"
 # Security layer
 ADDONSLAYERS += " \
     ${@'${OEROOT}/layers/meta-security \
@@ -64,7 +65,6 @@ ADDONSLAYERS += " \
 # specific to framework
 FRAMEWORKLAYERS += "${@'${OEROOT}/layers/meta-st/meta-st-openstlinux' if os.path.isfile('${OEROOT}/layers/meta-st/meta-st-openstlinux/conf/layer.conf') else ''}"
 FRAMEWORKLAYERS += "${@'${OEROOT}/layers/meta-myir-st' if os.path.isfile('${OEROOT}/layers/meta-myir-st/conf/layer.conf') else ''}"
-
 # add BSP layer
 BBLAYERS += " \
     ${BASELAYERS} \

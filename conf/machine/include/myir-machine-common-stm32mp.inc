@@ -23,7 +23,7 @@ BOOTSCHEME_LABELS ??= "trusted optee"
 # boot device
 # =========================================================================
 # List of supported boot devices
-BOOTDEVICE_LABELS ??= "emmc nand-4-256 nor-sdcard sdcard"
+BOOTDEVICE_LABELS ??= "emmc nand-2-256 nor-sdcard sdcard"
 
 # =========================================================================
 # Machine settings
@@ -55,8 +55,11 @@ STM32MP_DT_FILES_ED ??= ""
 STM32MP_DT_FILES_EV ??= ""
 STM32MP_DT_FILES_YA157C ??= ""
 
+
 # for myir myd-ya157c-v2
 STM32MP_DT_FILE_YA157C = "stm32mp157c-ya157c-512d-v2"
+# for myir myd-ya15xc-t
+
 
 # Set default supported device tree list
 STM32MP_DEVICETREE_append = " ${STM32MP_DT_FILES_DK} "
@@ -112,7 +115,8 @@ BOOTFS_PARTITION_SIZE ?= "65536"
 #   rootfs < 746.8MiB
 # Proposed value for rootfs is 746MiB
 # Define max size for ROOTFS image being built to this value
-IMAGE_ROOTFS_MAXSIZE ?= "763904"
+#IMAGE_ROOTFS_MAXSIZE ?= "763904"
+IMAGE_ROOTFS_MAXSIZE ?= "200800"
 # And configure the ROOTFS_PARTITION_SIZE variable accordingly
 ROOTFS_PARTITION_SIZE ?= "${IMAGE_ROOTFS_MAXSIZE}"
 # Proposed value for userfs is 128MB (4*32MB)
@@ -150,20 +154,29 @@ UBI_VOLNAME ?= "rootfs"
 #      nand_<PageSize>_<BlockSize>
 #      nor_<BlockSize>
 #   Like that a same UBI partition can be used for severals NAND/NOR providers
-MULTIUBI_BUILD += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'nand-4-256', 'nand_4_256', '', d)}"
-
+MULTIUBI_BUILD += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'nand-2-256', 'nand_2_256', '', d)}"
+#####################################################################
 # UBI Args for NAND by default on MB1262 (Micron MT29F8G16ABACAH4)
 # LEB = BLOCK_SIZE - (2 * page size): 256*1024 - (2*4096)
-MKUBIFS_ARGS_nand_4_256 = "--min-io-size 4096 --leb-size 253952 --max-leb-cnt 4096 --space-fixup"
-UBINIZE_ARGS_nand_4_256 = "--min-io-size 4096 --peb-size 256KiB"
+#1024MB nand for ST
+#MKUBIFS_ARGS_nand_2_256 = "--min-io-size 4096 --leb-size 253952 --max-leb-cnt 4096 --space-fixup"
+#UBINIZE_ARGS_nand_2_256 = "--min-io-size 4096 --peb-size 256KiB"
+#####################################################################
+# 512MB nand for myir
+#MKUBIFS_ARGS_nand_2_256 = "-F -m 2048 -e 126976 -c 4040 --space-fixup"
+#UBINIZE_ARGS_nand_2_256 = "-m 2048 -p 128KiB"
+MKUBIFS_ARGS_nand_2_256 = "--min-io-size 2048 --leb-size 126976 --max-leb-cnt 4040 --space-fixup"
+UBINIZE_ARGS_nand_2_256 = "--min-io-size 2048 --peb-size 128KiB"
+
+####################################################################
 # Set extra size required for UBIFS volume size (KiB)
-EXTRA_UBIFS_SIZE_nand_4_256 = "2304"
+EXTRA_UBIFS_SIZE_nand_2_256 = "2304"
 
 # Default FSTYPES requested
 WKS_IMAGE_FSTYPES ?= ""
 IMAGE_FSTYPES ?= "${WKS_IMAGE_FSTYPES} tar.xz ext4"
 # Append ubi FSTYPES to default ones for nand volumes
-IMAGE_FSTYPES += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'nand-4-256', 'stmultiubi', '', d)}"
+IMAGE_FSTYPES += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'nand-2-256', 'stmultiubi', '', d)}"
 
 # Define specific EXT4 command line:
 #   - Create minimal inode number (as it is done by default in image_types.bbclass)
@@ -337,7 +350,6 @@ tfaconfig_env[vardeps] += "${@bb.utils.contains('TF_A_CONFIG', 'trusted', 'TF_A_
 
 # List of TF-A device tree to use
 TF_A_DEVICETREE = "stm32mp157c-ya157c-512d-v2"
-#TF_A_DEVICETREE = "${STM32MP_DEVICETREE}"
 
 # =========================================================================
 # optee

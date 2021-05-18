@@ -11,20 +11,12 @@ DEPENDS += "flex-native bison-native"
 
 COMPATIBLE_MACHINE = "(stm32mpcommon)"
 
-
-#-----------------
-# gitee
-#-----------------
-#SRC_URI += " \
-#        git://gitee.com/lichang70/stm32mp15xc-uboot.git;protocol=https;branch=stm32mp-ya15xc"
-#SRCREV= "06dffe26f118cc887d64b5d5714e11262960ab84"
-
 #-----------------
 # github
 #-----------------
 SRC_URI += " \
-        git://github.com/MYiR-Dev/myir-st-u-boot.git;protocol=https;branch=develop"
-SRCREV= "1bf1091099e7a33ff3df96a01d72b4d80da51ae9"
+        git://github.com.cnpmjs.org/MYiR-Dev/myir-st-u-boot.git;protocol=https;branch=develop"
+SRCREV= "d91c017ce91ce31090527e7c019bef26f87a2304"
 
 
 U_BOOT_VERSION = "2020.1"
@@ -37,17 +29,12 @@ S = "${WORKDIR}/git"
 # ---------------------------------
 BBCLASSEXTEND = "devupstream:target"
 
-#------------------
-# gitee
-#------------------
-#SRC_URI_class-devupstream = "git://gitee.com/lichang70/stm32mp15xc-uboot.git;protocol=https;branch=stm32mp-ya15xc"
-#SRCREV= "06dffe26f118cc887d64b5d5714e11262960ab84"
 
 #-----------------
 # github
 #-----------------
-SRC_URI_class-devupstream = "git://github.com/MYiR-Dev/myir-st-u-boot.git;protocol=https;branch=develop"
-SRCREV= "1bf1091099e7a33ff3df96a01d72b4d80da51ae9"
+SRC_URI_class-devupstream = "git://github.com.cnpmjs.org/MYiR-Dev/myir-st-u-boot.git;protocol=https;branch=develop"
+SRCREV= "d91c017ce91ce31090527e7c019bef26f87a2304"
 
 SRCREV_FORMAT_class-devupstream = "uboot"
 PV_class-devupstream = "${U_BOOT_VERSION}+github+${SRCPV}"

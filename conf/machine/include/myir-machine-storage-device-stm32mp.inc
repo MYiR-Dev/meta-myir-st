@@ -77,15 +77,17 @@ DEVICE_BOARD_ENABLE_EMMC += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'emmc', '
 DEVICE_BOARD_ENABLE_EMMC += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'emmc', '${STM32MP_DT_FILES_EV}', '', d)}"
 DEVICE_BOARD_ENABLE_EMMC += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'emmc', '${STM32MP_DT_FILE_YA157C}', '', d)}"
 
+
 # -----------------------------------------------------------------------------
 # NAND
 DEVICE_START_OFFSET_NAND   ?= "0x00000000"
 DEVICE_ALIGNMENT_SIZE_NAND ?= "0x00040000"
 
 # Configure the list of boards that enable EMMC
-DEVICE_BOARD_ENABLE_NAND   += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'nand-4-256', '${STM32MP_DT_FILES_ED}', '', d)}"
-DEVICE_BOARD_ENABLE_NAND   += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'nand-4-256', '${STM32MP_DT_FILES_EV}', '', d)}"
-DEVICE_BOARD_ENABLE_NAND   += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'nand-4-256', '${STM32MP_DT_FILE_YA157C}', '', d)}"
+DEVICE_BOARD_ENABLE_NAND   += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'nand-2-256', '${STM32MP_DT_FILES_ED}', '', d)}"
+DEVICE_BOARD_ENABLE_NAND   += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'nand-2-256', '${STM32MP_DT_FILES_EV}', '', d)}"
+DEVICE_BOARD_ENABLE_NAND   += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'nand-2-256', '${STM32MP_DT_FILE_YA157C}', '', d)}"
+
 
 # -----------------------------------------------------------------------------
 # NOR
