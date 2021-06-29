@@ -17,8 +17,8 @@ S = "${WORKDIR}/git"
 BBCLASSEXTEND = "devupstream:target"
 
 SRC_URI += " \
-      git://github.com.cnpmjs.org/MYiR-Dev/myir-st-linux.git;protocol=https;branch=develop"
-SRCREV= "7dd48762a81577c8f57075090ce5b14c14d00f9b"
+      git://github.com/MYiR-Dev/myir-st-linux.git;protocol=https;branch=develop"
+SRCREV= "da97d4715bf07759e56c2e57e978f857cf0dbb8c"
 
 #PV = "${LINUX_VERSION}+${LINUX_SUBVERSION}+${SRCPV}"
 
