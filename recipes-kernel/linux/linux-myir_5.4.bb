@@ -18,7 +18,8 @@ BBCLASSEXTEND = "devupstream:target"
 
 SRC_URI += " \
       git://github.com/MYiR-Dev/myir-st-linux.git;protocol=https;branch=develop"
-SRCREV= "da97d4715bf07759e56c2e57e978f857cf0dbb8c"
+#SRCREV= "da97d4715bf07759e56c2e57e978f857cf0dbb8c"
+SRCREV= "484ab61132fde271867bcbcea549e5f18c636887"
 
 #PV = "${LINUX_VERSION}+${LINUX_SUBVERSION}+${SRCPV}"
 
