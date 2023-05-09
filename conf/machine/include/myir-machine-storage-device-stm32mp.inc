@@ -118,9 +118,10 @@ DEVICE_PARTUUID_ROOTFS:SDCARD ?= "${@d.getVar(d.expand('DEVICE_PARTUUID_ROOTFS:$
 
 # Configure the list of boards that enable SDCARD
 DEVICE_BOARD_ENABLE:SDCARD += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'sdcard', '${STM32MP_DT_FILES_DK}', '', d)}"
+DEVICE_BOARD_ENABLE:SDCARD += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'sdcard', '${MYIR_DT_FILES_13x}', '', d)}"
 DEVICE_BOARD_ENABLE:SDCARD += "${@bb.utils.contains_any('BOOTDEVICE_LABELS', [ 'sdcard', 'nor-sdcard', 'nor' ], '${STM32MP_DT_FILES_ED}', '', d)}"
 DEVICE_BOARD_ENABLE:SDCARD += "${@bb.utils.contains_any('BOOTDEVICE_LABELS', [ 'sdcard', 'nor-sdcard', 'nor' ], '${STM32MP_DT_FILES_EV}', '', d)}"
-
+DEVICE_BOARD_ENABLE:SDCARD += "${@bb.utils.contains_any('BOOTDEVICE_LABELS', [ 'sdcard', 'nor-sdcard', 'nor' ], '${MYIR_DT_FILES_13x}', '', d)}"
 # -----------------------------------------------------------------------------
 # SPI NAND
 DEVICE_START_OFFSET:SPINAND   ?= "0x00000000"
