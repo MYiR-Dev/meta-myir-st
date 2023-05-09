@@ -1,4 +1,4 @@
-require tf-a-stm32mp-common.inc
+require tf-a-myir-common.inc
 require tf-a-tools.inc
 
 SUMMARY = "Cert_create & Fiptool for fip generation for Trusted Firmware-A"

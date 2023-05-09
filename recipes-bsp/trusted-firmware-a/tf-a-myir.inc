@@ -1,4 +1,4 @@
-FILESEXTRAPATHS:prepend := "${THISDIR}/tf-a-stm32mp:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/tf-a-myir:"
 
 PROVIDES += "virtual/trusted-firmware-a"
 
@@ -8,7 +8,7 @@ inherit deploy
 inherit fip-utils-stm32mp
 
 # Include TF-A config definitions
-require tf-a-stm32mp-config.inc
+require tf-a-myir-config.inc
 
 # ------------------------------------
 # Set MBEDTLS support

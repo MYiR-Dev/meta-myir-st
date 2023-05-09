@@ -1,10 +1,11 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/tf-a-tools:"
 
-SRC_URI:append = " \
-    file://0001-tools-allow-to-use-a-root-key-password-from-command-.patch \
-    file://0002-fix-fiptool-respect-OPENSSL_DIR.patch \
-    file://0003-FIX-openssl-for-nativesdk.patch \
-    "
+#SRC_URI = "git://github.com/myir-private/myir-st-tfa.git;protocol=https;branch=develop-v2.6-stm32mp"
+#SRCREV = "4cc966a5372b13517343009b2f8797cb99828ce8"
+
+SRC_URI = "git:///media/system1/home/nene/ST/sources/tfa/myir-st-tfa;protocol=file;branch=${SRCBRANCH}"
+SRCREV = "4cc966a5372b13517343009b2f8797cb99828ce8"
+SRCBRANCH = "develop-v2.6-stm32mp"
 
 DEPENDS += "dtc-native openssl"
 

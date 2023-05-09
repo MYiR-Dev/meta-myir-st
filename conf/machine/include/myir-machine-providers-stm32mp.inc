@@ -12,7 +12,7 @@ PREFERRED_PROVIDER_u-boot = "u-boot-myir"
 # =========================================================================
 # trusted-firmware-a
 # =========================================================================
-PREFERRED_PROVIDER_virtual/trusted-firmware-a = "tf-a-stm32mp"
+PREFERRED_PROVIDER_virtual/trusted-firmware-a = "tf-a-myir"
 
 # =========================================================================
 # optee-os

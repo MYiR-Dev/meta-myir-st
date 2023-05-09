@@ -1,26 +1,27 @@
-FILESEXTRAPATHS:prepend := "${THISDIR}/tf-a-stm32mp:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/tf-a-myir:"
 
 SECTION = "bootloaders"
 
 LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://license.rst;md5=1dd070c98a281d18d9eefd938729b031"
 
-SRC_URI = "git://github.com/ARM-software/arm-trusted-firmware.git;protocol=https;branch=master"
-SRCREV = "a1f02f4f3daae7e21ee58b4c93ec3e46b8f28d15"
+#SRC_URI = "git://github.com:myir-private/myir-st-tfa.git;protocol=https;branch=develop-v2.6-stm32mp"
+#SRCREV = "4cc966a5372b13517343009b2f8797cb99828ce8"
 
-SRC_URI += " \
-    file://0001-v2.6-stm32mp-r1.patch \
-    file://0002-v2.6-stm32mp-r2.patch \
-    "
+SRC_URI = "git:///media/system1/home/nene/ST/sources/tfa/myir-st-tfa;protocol=file;branch=${SRCBRANCH}"
+SRCREV = "4cc966a5372b13517343009b2f8797cb99828ce8"
+SRCBRANCH = "develop-v2.6-stm32mp"
+
+
 
 TF_A_VERSION = "v2.6"
 TF_A_SUBVERSION = "stm32mp"
 TF_A_RELEASE = "r2"
 PV = "${TF_A_VERSION}-${TF_A_SUBVERSION}-${TF_A_RELEASE}"
 
-ARCHIVER_ST_BRANCH = "${TF_A_VERSION}-${TF_A_SUBVERSION}"
+ARCHIVER_ST_BRANCH = "develop-${TF_A_VERSION}-${TF_A_SUBVERSION}"
 ARCHIVER_ST_REVISION = "${PV}"
-ARCHIVER_COMMUNITY_BRANCH = "master"
+ARCHIVER_COMMUNITY_BRANCH = "develop-v2.6-stm32mp"
 ARCHIVER_COMMUNITY_REVISION = "${TF_A_VERSION}"
 
 S = "${WORKDIR}/git"
@@ -30,8 +31,8 @@ S = "${WORKDIR}/git"
 # ---------------------------------
 BBCLASSEXTEND = "devupstream:target"
 
-SRC_URI:class-devupstream = "git://github.com/STMicroelectronics/arm-trusted-firmware.git;protocol=https;branch=${ARCHIVER_ST_BRANCH}"
-SRCREV:class-devupstream = "4b6e8e9bf8fa676ff8d1358ea2cf2e44904c2473"
+SRC_URI:class-devupstream = "git://github.com/myir-private/myir-st-tfa.git;protocol=https;branch=${ARCHIVER_ST_BRANCH}"
+SRCREV:class-devupstream = "4cc966a5372b13517343009b2f8797cb99828ce8"
 
 # ---------------------------------
 # Configure default preference to manage dynamic selection between tarball and github
