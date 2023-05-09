@@ -281,7 +281,7 @@ PRSERV_HOST = "localhost:0"
 #STM32MP_SOURCE_SELECTION:pn-linux-stm32mp = "github"
 #STM32MP_SOURCE_SELECTION:pn-optee-os-stm32mp = "github"
 #STM32MP_SOURCE_SELECTION:pn-tf-a-stm32mp = "github"
-#STM32MP_SOURCE_SELECTION:pn-u-boot-stm32mp = "github"
+#STM32MP_SOURCE_SELECTION:pn-u-boot-myir = "github"
 
 #skip connectivity checks
 CONNECTIVITY_CHECK_URIS = ""

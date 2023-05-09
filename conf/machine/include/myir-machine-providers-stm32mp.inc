@@ -6,8 +6,8 @@ PREFERRED_PROVIDER_virtual/kernel = "linux-myir"
 # =========================================================================
 # u-boot
 # =========================================================================
-PREFERRED_PROVIDER_virtual/bootloader = "u-boot-stm32mp"
-PREFERRED_PROVIDER_u-boot = "u-boot-stm32mp"
+PREFERRED_PROVIDER_virtual/bootloader = "u-boot-myir"
+PREFERRED_PROVIDER_u-boot = "u-boot-myir"
 
 # =========================================================================
 # trusted-firmware-a

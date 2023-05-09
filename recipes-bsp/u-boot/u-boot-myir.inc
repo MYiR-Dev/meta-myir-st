@@ -1,6 +1,6 @@
 require recipes-bsp/u-boot/u-boot.inc
 
-FILESEXTRAPATHS:prepend := "${THISDIR}/u-boot-stm32mp:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/u-boot-myir:"
 
 # Configure build dir for externalsrc class usage through devtool
 EXTERNALSRC_BUILD:pn-${PN} = "${WORKDIR}/build"
@@ -190,7 +190,7 @@ do_compile:append() {
                 unset j
             done
         else
-            bbfatal "Wrong u-boot-stm32mp configuration: please make sure to use UBOOT_CONFIG through BOOTSCHEME_LABELS config"
+            bbfatal "Wrong u-boot-myir configuration: please make sure to use UBOOT_CONFIG through BOOTSCHEME_LABELS config"
         fi
     fi
 }
@@ -296,7 +296,7 @@ do_deploy:append() {
                 unset j
             done
         else
-            bbfatal "Wrong u-boot-stm32mp configuration: please make sure to use UBOOT_CONFIG through BOOTSCHEME_LABELS config"
+            bbfatal "Wrong u-boot-myir configuration: please make sure to use UBOOT_CONFIG through BOOTSCHEME_LABELS config"
         fi
     fi
 

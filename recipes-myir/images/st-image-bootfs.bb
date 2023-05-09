@@ -12,7 +12,7 @@ IMAGE_ROOTFS_EXTRA_SPACE = "0"
 PACKAGE_INSTALL += " \
     kernel-imagebootfs \
     stm32mp-extlinux \
-    ${@bb.utils.contains('MACHINE_FEATURES', 'splashscreen', 'u-boot-stm32mp-splash', '', d)} \
+    ${@bb.utils.contains('MACHINE_FEATURES', 'splashscreen', 'u-boot-myir-splash', '', d)} \
 "
 
 # Add specific initrd package to bootfs
