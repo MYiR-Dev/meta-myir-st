@@ -1,11 +1,11 @@
 #@DESCRIPTION: Common Machine configuration for STM32 systems
 
-require conf/machine/include/st-machine-extlinux-config-stm32mp.inc
-require conf/machine/include/st-machine-features-stm32mp.inc
-require conf/machine/include/st-machine-flashlayout-stm32mp.inc
-require conf/machine/include/st-machine-flashlayout-deleteall-stm32mp.inc
-require conf/machine/include/st-machine-flashlayout-extensible-stm32mp.inc
-require conf/machine/include/st-machine-storage-device-stm32mp.inc
+require conf/machine/include/myir-machine-extlinux-config-stm32mp.inc
+require conf/machine/include/myir-machine-features-stm32mp.inc
+require conf/machine/include/myir-machine-flashlayout-stm32mp.inc
+require conf/machine/include/myir-machine-flashlayout-deleteall-stm32mp.inc
+require conf/machine/include/myir-machine-flashlayout-extensible-stm32mp.inc
+require conf/machine/include/myir-machine-storage-device-stm32mp.inc
 
 # Define specific common machine name
 MACHINEOVERRIDES .= ":stcommon"
@@ -19,9 +19,11 @@ MACHINEOVERRIDES .= ":stm32mpcommon"
 STM32MP_SOC_NAME = ""
 STM32MP_SOC_NAME:append:stm32mp15common = " stm32mp15 "
 STM32MP_SOC_NAME:append:stm32mp13common = " stm32mp13 "
+STM32MP_SOC_NAME:append:stm32mp13common = " myir "
 # Take care of nativesdk override use case
 STM32MP_SOC_NAME:append:class-nativesdk = " stm32mp15 "
 STM32MP_SOC_NAME:append:class-nativesdk = " stm32mp13 "
+STM32MP_SOC_NAME:append:class-nativesdk = " myir "
 
 # =========================================================================
 # boot scheme
@@ -72,11 +74,12 @@ MACHINE_EXTRA_RRECOMMENDS = " kernel-modules kernel-imagebootfs"
 STM32MP_DT_FILES_DK ??= ""
 STM32MP_DT_FILES_ED ??= ""
 STM32MP_DT_FILES_EV ??= ""
+MYIR_DT_FILES_13x ??= ""
 # Set default supported device tree list
 STM32MP_DEVICETREE:append = " ${STM32MP_DT_FILES_DK} "
 STM32MP_DEVICETREE:append = " ${STM32MP_DT_FILES_ED} "
 STM32MP_DEVICETREE:append = " ${STM32MP_DT_FILES_EV} "
-
+STM32MP_DEVICETREE:append = " ${MYIR_DT_FILES_13x} "
 # =========================================================================
 # Machine specific packages
 # =========================================================================

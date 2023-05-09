@@ -66,6 +66,7 @@ UBOOT_EXTLINUX_MENU_DESCRIPTION:rootfs = "OpenSTLinux"
 UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG:target-sdcard += "${STM32MP_DT_FILES_DK}"
 UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG:target-sdcard += "${STM32MP_DT_FILES_ED}"
 UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG:target-sdcard += "${STM32MP_DT_FILES_EV}"
+UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG:target-sdcard += "${MYIR_DT_FILES_13x}"
 UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG:target-emmc += "${STM32MP_DT_FILES_ED}"
 UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG:target-emmc += "${STM32MP_DT_FILES_EV}"
 UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG:target-nand += "${STM32MP_DT_FILES_ED}"
@@ -86,7 +87,7 @@ UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG[stm32mp157f-dk2] += "stm32mp157f-dk2-m4-exam
 UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG[stm32mp157f-ev1] += "stm32mp157f-ev1-m4-examples"
 
 UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG[stm32mp135f-dk] += "stm32mp135f-dk-a7-examples"
-
+UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG[MYIR_DT_FILES_13x] += "myb-stm32mp135x-512m"
 # -----------------------------------------------------------------------------
 # Configure A7 examples labels
 # -----------------------------------------------------------------------------
