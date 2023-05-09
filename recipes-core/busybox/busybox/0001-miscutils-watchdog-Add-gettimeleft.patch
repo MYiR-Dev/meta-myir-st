@@ -1,0 +1,37 @@
+From 6369613da1d212c67c2c6001a77f4949938addc7 Mon Sep 17 00:00:00 2001
+From: Christophe Priouzeau <christophe.priouzeau@foss.st.com>
+Date: Mon, 3 Jan 2022 16:03:20 +0100
+Subject: [PATCH] miscutils: watchdog: Add gettimeleft
+
+For purpose debug only, call of ioctl GETTIMELEFT
+
+Signed-off-by: Yannick Fertre <yannick.fertre@st.com>
+---
+ miscutils/watchdog.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/miscutils/watchdog.c b/miscutils/watchdog.c
+index d8e9c78..4227188 100644
+--- a/miscutils/watchdog.c
++++ b/miscutils/watchdog.c
+@@ -110,6 +110,7 @@ int watchdog_main(int argc UNUSED_PARAM, char **argv)
+ 	unsigned opts;
+ 	unsigned stimer_duration; /* how often to restart */
+ 	unsigned htimer_duration = 60000; /* reboots after N ms if not restarted */
++	unsigned time_left;
+ 	char *st_arg;
+ 	char *ht_arg;
+ 
+@@ -160,6 +161,9 @@ int watchdog_main(int argc UNUSED_PARAM, char **argv)
+ 		 */
+ 		write(3, "", 1); /* write zero byte */
+ 		msleep(stimer_duration);
++#ifdef WDIOC_GETTIMELEFT
++		ioctl_or_warn(3, WDIOC_GETTIMELEFT, &time_left);
++#endif
+ 	}
+ 	return EXIT_SUCCESS; /* - not reached, but gcc 4.2.1 is too dumb! */
+ }
+-- 
+2.25.1
+
