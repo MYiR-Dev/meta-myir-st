@@ -14,7 +14,7 @@ COMPATIBLE_MACHINE = "(stm32mpcommon)"
 
 #SRC_URI = "git://github.com/myir-private/myir-st-uboot.git;protocol=https;branch=develop-v2021.10-stm32mp"
 SRC_URI = "git:///media/system1/home/nene/ST/yt135-duxy/sources/uboot/myir-st-uboot;protocol=file;branch=${SRCBRANCH}"
-SRCREV  = "742d0c3ea3a65a3f8edb26e8906a5133d503c390"
+SRCREV  = "5be311e341e3dd69204cb6bfcc9e93fe04192596"
 SRCBRANCH = "develop-v2021.10-stm32mp"
 
 
@@ -39,7 +39,7 @@ S = "${WORKDIR}/git"
 BBCLASSEXTEND = "devupstream:target"
 
 SRC_URI:class-devupstream = "git://github.com/myir-private/myir-st-uboot.git;protocol=https;branch=${ARCHIVER_ST_BRANCH}"
-SRCREV:class-devupstream = "742d0c3ea3a65a3f8edb26e8906a5133d503c390"
+SRCREV:class-devupstream = "5be311e341e3dd69204cb6bfcc9e93fe04192596"
 
 # ---------------------------------
 # Configure default preference to manage dynamic selection between tarball and github
