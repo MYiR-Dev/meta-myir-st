@@ -52,6 +52,7 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     libmodbus \
     qtvirtualkeyboard \
     iperf3 \
+    udev-extraconf \
     "
 
 # NOTE:
