@@ -62,6 +62,8 @@ ROOTFS_POSTPROCESS_COMMAND:append = "install_demo;"
 install_demo() {
 
 
-
+ 
+ sed -i 's/myd-yf13x.*/myd-yf13x/g' ${IMAGE_ROOTFS}/etc/hosts
+ sed -i 's/myd-yf13x.*/myd-yf13x/g' ${IMAGE_ROOTFS}/etc/hostname
     
 }
