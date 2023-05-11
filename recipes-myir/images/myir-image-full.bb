@@ -51,6 +51,7 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     packagegroup-st-demo \
     libmodbus \
     qtvirtualkeyboard \
+    iperf3 \
     "
 
 # NOTE:
