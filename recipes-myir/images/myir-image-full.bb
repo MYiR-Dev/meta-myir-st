@@ -58,6 +58,7 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     ppp \
     ecm \
     ncurses \
+    readline \
     "
 
 # NOTE:
