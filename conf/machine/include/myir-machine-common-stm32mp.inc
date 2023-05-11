@@ -130,6 +130,7 @@ STM32MP_METADATA_SIZE_UBOOT ?= "512"
 # Bootloader Partitions configuration
 PARTITIONS_BOOTLOADER_CONFIG += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'emmc', 'emmc', '', d)}"
 PARTITIONS_BOOTLOADER_CONFIG += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'nand-4-256', 'nand-4-256', '', d)}"
+PARTITIONS_BOOTLOADER_CONFIG += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'nand-256-256', 'nand-256-256', '', d)}"
 PARTITIONS_BOOTLOADER_CONFIG += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'nor-sdcard', 'nor-sdcard', '', d)}"
 PARTITIONS_BOOTLOADER_CONFIG += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'nor', 'nor', '', d)}"
 PARTITIONS_BOOTLOADER_CONFIG += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'sdcard', 'sdcard', '', d)}"
@@ -274,6 +275,7 @@ STM32MP_UBIFS_SIZE ?= ""
 # Partitions configuration
 PARTITIONS_CONFIG += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'emmc', 'emmc', '', d)}"
 PARTITIONS_CONFIG += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'nand-4-256', 'nand-4-256', '', d)}"
+PARTITIONS_CONFIG += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'nand-256-256', 'nand-256-256', '', d)}"
 PARTITIONS_CONFIG += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'nor', 'nor', '', d)}"
 PARTITIONS_CONFIG += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'nor-sdcard', 'nor-sdcard', '', d)}"
 PARTITIONS_CONFIG += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'sdcard', 'sdcard', '', d)}"
@@ -313,6 +315,7 @@ UBI_VOLNAME ?= "rootfs"
 #      nor_<BlockSize>
 #   Like that a same UBI partition can be used for severals NAND/NOR providers
 MULTIUBI_BUILD += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'nand-4-256', 'nand_4_256', '', d)}"
+MULTIUBI_BUILD += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'nand-256-256', 'nand_256_256', '', d)}"
 MULTIUBI_BUILD += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'spinand-2-128', 'spinand_2_128', '', d)}"
 
 # UBI Args for NAND by default on MB1262 (Micron MT29F8G16ABACAH4)
@@ -352,7 +355,7 @@ IMAGE_FSTYPES ?= "${WKS_IMAGE_FSTYPES} tar.xz"
 # Append ext4 FSTYPES to default ones for emmc and sdcard volumes
 IMAGE_FSTYPES += "${@bb.utils.contains_any('BOOTDEVICE_LABELS', 'emmc nor-sdcard sdcard', 'ext4', '', d)}"
 # Append ubi FSTYPES to default ones for nand volumes
-IMAGE_FSTYPES += "${@bb.utils.contains_any('BOOTDEVICE_LABELS', 'nand-4-256 spinand-2-128', 'stmultiubi', '', d)}"
+IMAGE_FSTYPES += "${@bb.utils.contains_any('BOOTDEVICE_LABELS', 'nand-4-256 spinand-2-128 nand-256-256', 'stmultiubi', '', d)}"
 
 # Define specific EXT4 command line:
 #   - Create minimal inode number (as it is done by default in image_types.bbclass)
@@ -561,6 +564,7 @@ UBOOT_MTDPART_SPINAND_BOOT ?= "${@','.join(['%sk(%s)' % (align_size(d, 'SPINAND'
 
 UBOOT_MTDPART_CHECK ?= "\
     ${@bb.utils.contains('BOOTDEVICE_LABELS', 'nand-4-256', 'CONFIG_MTDPARTS_NAND0_BOOT=${UBOOT_MTDPART_NAND_BOOT}', '', d)} \
+    ${@bb.utils.contains('BOOTDEVICE_LABELS', 'nand-256-256', 'CONFIG_MTDPARTS_NAND0_BOOT=${UBOOT_MTDPART_NAND_BOOT}', '', d)} \
     ${@bb.utils.contains('BOOTDEVICE_LABELS', 'nor-sdcard', 'CONFIG_MTDPARTS_NOR0_BOOT=${UBOOT_MTDPART_NOR_BOOT}', '', d)} \
     ${@bb.utils.contains('BOOTDEVICE_LABELS', 'spinand-2-128', 'CONFIG_MTDPARTS_SPINAND0_BOOT=${UBOOT_MTDPART_SPINAND_BOOT}', '', d)} \
     "
@@ -583,6 +587,7 @@ TF_A_CONFIG += "${@bb.utils.contains('BOOTSCHEME_LABELS', 'optee', 'optee', '', 
 TF_A_CONFIG += "${@bb.utils.contains('BOOTSCHEME_LABELS', 'trusted', 'trusted', '', d)}"
 # Manage specific config settings
 TF_A_CONFIG += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'emmc', 'emmc', '', d)}"
+TF_A_CONFIG += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'nand-256-256', 'nand', '', d)}"
 TF_A_CONFIG += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'nand-4-256', 'nand', '', d)}"
 TF_A_CONFIG += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'nor-sdcard', 'nor', '', d)}"
 TF_A_CONFIG += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'sdcard', 'sdcard', '', d)}"

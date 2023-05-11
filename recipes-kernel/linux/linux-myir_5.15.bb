@@ -17,7 +17,7 @@ SRC_URI[kernel.sha256sum] = "da47d9a80b694548835ccb553b6eb1a1f3f5d5cddd9e2bd6f48
 
 #SRC_URI = "git://github.com/myir-private/myir-st-linux.git;protocol=https;branch=develop-stm32mp-L5.15"
 SRC_URI = "git:///media/system1/home/nene/ST/yt135-duxy/sources/kernel/myir-st-linux;protocol=file;branch=${SRCBRANCH}"
-SRCREV = "dd4580cd4731186f4ce6762be1c77e803fa7ccc4"
+SRCREV = "fecc239925c47629b85494c377f40d625f34d901"
 SRCBRANCH = "develop-stm32mp-L5.15"
 
 
