@@ -53,6 +53,7 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     qtvirtualkeyboard \
     iperf3 \
     udev-extraconf \
+    tslib \
     "
 
 # NOTE:
