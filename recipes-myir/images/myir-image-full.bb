@@ -55,6 +55,8 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     udev-extraconf \
     tslib \
     genext2fs \
+    ppp \
+    ecm \
     "
 
 # NOTE:

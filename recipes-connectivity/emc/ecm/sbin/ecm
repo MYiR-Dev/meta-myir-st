@@ -1,0 +1,61 @@
+#!/bin/sh
+
+var_ip=" "
+
+TTYUSB="/dev/ttyUSB5"
+
+chat_ecm()
+{
+	if [ -c ${TTYUSB} ];then
+		chat -e -t 1 '' 'AT+SYSNV=1,"usbmode",5' 'OK' '' >${TTYUSB} <${TTYUSB}
+	fi
+	sleep 1
+	if [ -c ${TTYUSB} ];then
+		chat -e -t 1 '' 'AT+CGDCONT=1,"IP","CMNET" ' 'OK' '' >${TTYUSB} <${TTYUSB}
+	fi
+
+	sleep 1
+	if [ -c ${TTYUSB} ];then
+		chat -e -t 1 '' 'AT+CGACT=1,1' 'OK' '' >${TTYUSB} <${TTYUSB}
+	fi
+}
+
+function getlteaddr(){
+	rm /var/log/tmp.txt -f
+	chat -e -t 1 '' 'AT+CGPADDR' 'OK' '' >${TTYUSB}<${TTYUSB} 2&> /var/log/tmp.txt
+	stringaddr=`cat /var/log/tmp.txt  | grep "+CGPADDR:"`
+	var_temp=`echo $stringaddr |awk -F ',' '{print $2}'`
+	var_ip=${var_temp: 1: -1}
+}
+
+function check_ip() {
+	IP=$1
+	VALID_CHECK=$(echo $IP|awk -F. '$1<=255&&$2<=255&&$3<=255&&$4<=255{print "yes"}')
+	if echo $IP|grep -E "^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$">/dev/null; then
+	    if [ ${VALID_CHECK:-no} == "yes" ]; then
+	        echo "IP $IP available."
+	    		return 1
+	    else
+	        echo "IP $IP not available!"
+	    		return 0
+	    fi
+	else
+	    echo "IP format error!"
+	fi
+}
+
+###
+
+chat_ecm
+getlteaddr
+check_ip  $var_ip
+if [ $? -eq 0 ];then
+   return 0
+else
+   killall udhcpc
+   sleep 2
+   udhcpc -i eth2
+   return 1
+fi
+
+exit 0
