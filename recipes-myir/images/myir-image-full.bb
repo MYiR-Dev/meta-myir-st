@@ -57,6 +57,7 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     genext2fs \
     ppp \
     ecm \
+    ncurses \
     "
 
 # NOTE:
