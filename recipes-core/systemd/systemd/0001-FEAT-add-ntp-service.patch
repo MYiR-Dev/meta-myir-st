@@ -1,0 +1,28 @@
+From 88ce7e441d162d932a7f6fd67f75317db041500f Mon Sep 17 00:00:00 2001
+From: wshuang123 <396194015@qq.com>
+Date: Thu, 11 May 2023 17:56:31 +0800
+Subject: [PATCH] FEAT: add ntp service
+
+---
+ src/timesync/timesyncd.conf.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/timesync/timesyncd.conf.in b/src/timesync/timesyncd.conf.in
+index df02cb5bd6..2987b0c33f 100644
+--- a/src/timesync/timesyncd.conf.in
++++ b/src/timesync/timesyncd.conf.in
+@@ -13,9 +13,9 @@
+ # See timesyncd.conf(5) for details.
+ 
+ [Time]
+-#NTP=
++NTP=ntp.aliyun.com ntp.chehejia.com
+ #FallbackNTP={{NTP_SERVERS}}
+ #RootDistanceMaxSec=5
+ #PollIntervalMinSec=32
+-#PollIntervalMaxSec=2048
++PollIntervalMaxSec=35
+ #SaveIntervalSec=60
+-- 
+2.17.1
+
