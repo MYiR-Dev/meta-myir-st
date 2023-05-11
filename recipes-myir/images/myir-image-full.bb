@@ -60,6 +60,7 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     ncurses \
     readline \
     check-snpn \
+    qt-demo \
     "
 
 # NOTE:
