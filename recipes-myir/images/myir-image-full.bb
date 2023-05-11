@@ -54,6 +54,7 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     iperf3 \
     udev-extraconf \
     tslib \
+    genext2fs \
     "
 
 # NOTE:
