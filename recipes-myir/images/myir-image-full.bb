@@ -59,6 +59,7 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     ecm \
     ncurses \
     readline \
+    check-snpn \
     "
 
 # NOTE:
@@ -69,7 +70,7 @@ CORE_IMAGE_EXTRA_INSTALL += " \
 ROOTFS_POSTPROCESS_COMMAND:append = "install_demo;"
 install_demo() {
 
-
+ echo "bash eeprom.sh" >> ${IMAGE_ROOTFS}/etc/profile
  
  sed -i 's/myd-yf13x.*/myd-yf13x/g' ${IMAGE_ROOTFS}/etc/hosts
  sed -i 's/myd-yf13x.*/myd-yf13x/g' ${IMAGE_ROOTFS}/etc/hostname
