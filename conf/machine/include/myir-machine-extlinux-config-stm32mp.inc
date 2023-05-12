@@ -89,6 +89,7 @@ UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG[stm32mp157f-ev1] += "stm32mp157f-ev1-m4-exam
 
 UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG[stm32mp135f-dk] += "stm32mp135f-dk-a7-examples"
 UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG[myb-stm32mp135x-512m] += "myb-stm32mp135x-512m"
+UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG[myb-stm32mp135x-512m-hdmi] += "myb-stm32mp135x-512m-hdmi"
 UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG[myb-stm32mp135x-256m] += "myb-stm32mp135x-256m"
 # -----------------------------------------------------------------------------
 # Configure A7 examples labels
@@ -103,6 +104,7 @@ UBOOT_EXTLINUX_FDT:stm32mp157f-ev1-a7-examples = "/stm32mp157f-ev1-a7-examples.d
 UBOOT_EXTLINUX_FDT:stm32mp135f-dk-a7-examples = "/stm32mp135f-dk-a7-examples.dtb"
 UBOOT_EXTLINUX_FDT:myb-stm32mp135x-256m = "/myb-stm32mp135x-256m.dtb"
 UBOOT_EXTLINUX_FDT:myb-stm32mp135x-512m = "/myb-stm32mp135x-512m.dtb"
+UBOOT_EXTLINUX_FDT:myb-stm32mp135x-512m-hdmi = "/myb-stm32mp135x-512m-hdmi.dtb"
 # -----------------------------------------------------------------------------
 # Configure M4 examples labels
 # -----------------------------------------------------------------------------
