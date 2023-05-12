@@ -1,7 +1,7 @@
 SUMMARY = "OpenSTLinux weston image with basic Wayland support (if enable in distro)."
 LICENSE = "Proprietary"
 
-include recipes-st/images/st-image.inc
+include recipes-st/images/myir-image.inc
 
 inherit populate_sdk_qt5
 inherit core-image features_check
