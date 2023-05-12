@@ -61,6 +61,7 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     readline \
     check-snpn \
     qt-demo \
+    camera-demo \
     "
 
 # NOTE:
