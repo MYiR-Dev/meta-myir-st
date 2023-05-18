@@ -89,7 +89,7 @@ DEVICE_ALIGNMENT_SIZE:NAND ?= "0x00040000"
 
 # Configure the list of boards that enable NAND
 DEVICE_BOARD_ENABLE:NAND   += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'nand-4-256', '${STM32MP_DT_FILES_EV}', '', d)}"
-
+DEVICE_BOARD_ENABLE:NAND   += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'nand-256-256', '${MYIR_DT_FILES_13x}', '', d)}"
 # -----------------------------------------------------------------------------
 # NOR
 DEVICE_START_OFFSET:NOR    ?= "0x00000000"
@@ -131,7 +131,7 @@ DEVICE_ALIGNMENT_SIZE:SPINAND ?= "0x00020000"
 
 # Configure the list of boards that enable SPINAND
 DEVICE_BOARD_ENABLE:SPINAND += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'spinand-2-128', '', '', d)}"
-
+DEVICE_BOARD_ENABLE:SPINAND += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'spinand-256-256', '${MYIR_DT_FILES_13x}', '', d)}"
 # -----------------------------------------------------------------------------
 # Fixed configuration from U-Boot source code
 # -----------------------------------------------------------------------------

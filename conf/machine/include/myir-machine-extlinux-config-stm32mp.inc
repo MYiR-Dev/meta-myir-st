@@ -24,7 +24,7 @@ UBOOT_EXTLINUX_KERNEL_ARGS:append = " ${@bb.utils.contains('ST_DEBUG_TRACE', '1'
 UBOOT_EXTLINUX_TARGETS += "${@bb.utils.contains_any('BOOTDEVICE_LABELS', [ 'sdcard', 'nor-sdcard' ], 'target-sdcard', '', d)}"
 UBOOT_EXTLINUX_TARGETS += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'nor', 'target-nor', '', d)}"
 UBOOT_EXTLINUX_TARGETS += "${@bb.utils.contains('BOOTDEVICE_LABELS', 'emmc', 'target-emmc', '', d)}"
-UBOOT_EXTLINUX_TARGETS += "${@bb.utils.contains_any('BOOTDEVICE_LABELS', [ 'nand-4-256', 'nor-nand-4-256 nand-256-256' ], 'target-nand', '', d)}"
+UBOOT_EXTLINUX_TARGETS += "${@bb.utils.contains_any('BOOTDEVICE_LABELS', [ 'nand-4-256', 'nor-nand-4-256' , 'spinand-256-256' ], 'target-nand', '', d)}"
 # Define labels for each target
 # (mandatory to allow specific var override if needed)
 UBOOT_EXTLINUX_LABELS:target-sdcard += "rootfs"
@@ -72,6 +72,7 @@ UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG:target-emmc += "${STM32MP_DT_FILES_EV}"
 UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG:target-emmc += "${MYIR_DT_FILES_13x}"
 UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG:target-nand += "${STM32MP_DT_FILES_ED}"
 UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG:target-nand += "${STM32MP_DT_FILES_EV}"
+UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG:target-nand += "${MYIR_DT_FILES_13x}"
 UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG:target-nor += "${STM32MP_DT_FILES_ED}"
 UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG:target-nor += "${STM32MP_DT_FILES_EV}"
 # Define extra label configuration
@@ -91,6 +92,7 @@ UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG[stm32mp135f-dk] += "stm32mp135f-dk-a7-exampl
 UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG[myb-stm32mp135x-512m] += "myb-stm32mp135x-512m"
 UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG[myb-stm32mp135x-512m-hdmi] += "myb-stm32mp135x-512m-hdmi"
 UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG[myb-stm32mp135x-256m] += "myb-stm32mp135x-256m"
+UBOOT_EXTLINUX_TARGETS_EXTRA_CONFIG[myb-stm32mp135x-256m-hdmi] += "myb-stm32mp135x-256m-hdmi"
 # -----------------------------------------------------------------------------
 # Configure A7 examples labels
 # -----------------------------------------------------------------------------
@@ -103,6 +105,7 @@ UBOOT_EXTLINUX_FDT:stm32mp157f-ev1-a7-examples = "/stm32mp157f-ev1-a7-examples.d
 
 UBOOT_EXTLINUX_FDT:stm32mp135f-dk-a7-examples = "/stm32mp135f-dk-a7-examples.dtb"
 UBOOT_EXTLINUX_FDT:myb-stm32mp135x-256m = "/myb-stm32mp135x-256m.dtb"
+UBOOT_EXTLINUX_FDT:myb-stm32mp135x-256m-hdmi = "/myb-stm32mp135x-256m-hdmi.dtb"
 UBOOT_EXTLINUX_FDT:myb-stm32mp135x-512m = "/myb-stm32mp135x-512m.dtb"
 UBOOT_EXTLINUX_FDT:myb-stm32mp135x-512m-hdmi = "/myb-stm32mp135x-512m-hdmi.dtb"
 # -----------------------------------------------------------------------------
