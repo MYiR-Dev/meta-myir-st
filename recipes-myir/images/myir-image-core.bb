@@ -32,6 +32,7 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     ecm \
     check-snpn \
     camera-demo \
+    lvgl-demo \
     "
 # NOTE:
 #   packagegroup-st-demo are installed on rootfs to populate the package

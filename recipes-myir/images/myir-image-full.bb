@@ -62,6 +62,7 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     check-snpn \
     qt-demo \
     camera-demo \
+    lvgl-demo \
     "
 
 # NOTE:
