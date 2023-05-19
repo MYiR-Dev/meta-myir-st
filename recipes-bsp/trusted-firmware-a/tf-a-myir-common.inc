@@ -8,9 +8,9 @@ LIC_FILES_CHKSUM = "file://license.rst;md5=1dd070c98a281d18d9eefd938729b031"
 #SRC_URI = "git://github.com:myir-private/myir-st-tfa.git;protocol=https;branch=develop-v2.6-stm32mp"
 #SRCREV = "4cc966a5372b13517343009b2f8797cb99828ce8"
 
-SRC_URI = "git:///media/system1/home/nene/ST/sources/tfa/myir-st-tfa;protocol=file;branch=${SRCBRANCH}"
+SRC_URI = "git://github.com/MYiR-Dev/myir-st-arm-trusted-firmware.git;protocol=https;branch=${SRCBRANCH}"
 SRCREV = "4cc966a5372b13517343009b2f8797cb99828ce8"
-SRCBRANCH = "develop-v2.6-stm32mp"
+SRCBRANCH = "develop-yf13x-v2.6"
 
 
 
@@ -31,7 +31,7 @@ S = "${WORKDIR}/git"
 # ---------------------------------
 BBCLASSEXTEND = "devupstream:target"
 
-SRC_URI:class-devupstream = "git://github.com/myir-private/myir-st-tfa.git;protocol=https;branch=${ARCHIVER_ST_BRANCH}"
+SRC_URI:class-devupstream = "git://github.com/MYiR-Dev/myir-st-arm-trusted-firmware.git;protocol=https;branch=${SRCBRANCH}"
 SRCREV:class-devupstream = "4cc966a5372b13517343009b2f8797cb99828ce8"
 
 # ---------------------------------

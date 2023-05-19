@@ -2,10 +2,9 @@ SUMMARY = "OPTEE TA development kit for myir"
 LICENSE = "BSD-2-Clause & BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=c1f21c4f72f372ef38a5a4aee55ec173"
 
-#SRC_URI = "git://github.com/myir-private/myir-st-optee.git;protocol=https;branch=develop-3.16.0-stm32mp;"
-SRC_URI = "git:///media/system1/home/nene/ST/sources/optee/myir-st-optee;protocol=file;branch=${SRCBRANCH}"
+SRC_URI = "git://github.com/MYiR-Dev/myir-st-optee_os.git;protocol=https;branch=${SRCBRANCH}"
 SRCREV = "f44b6e4c9874d3c13a9155bc4393a48614dd6778"
-SRCBRANCH = "develop-3.16.0-stm32mp"
+SRCBRANCH = "develop-yf13x-v3.16"
 
 
 OPTEE_VERSION = "3.16.0"
@@ -44,7 +43,7 @@ include ${@oe.utils.ifelse(d.getVar('ST_ARCHIVER_ENABLE') == '1', 'optee-os-myir
 # ---------------------------------
 BBCLASSEXTEND = "devupstream:target"
 
-SRC_URI:class-devupstream = "git://github.com/myir-private/myir-st-optee.git;protocol=https;branch=${ARCHIVER_ST_BRANCH}"
+SRC_URI:class-devupstream = "git://github.com/MYiR-Dev/myir-st-optee_os.git;protocol=https;branch=${SRCBRANCH}"
 SRCREV:class-devupstream = "f44b6e4c9874d3c13a9155bc4393a48614dd6778"
 
 # ---------------------------------

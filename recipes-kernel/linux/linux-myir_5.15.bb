@@ -15,10 +15,9 @@ LINUX_TARNAME = "linux-${LINUX_VERSION}.${LINUX_SUBVERSION}"
 
 SRC_URI[kernel.sha256sum] = "da47d9a80b694548835ccb553b6eb1a1f3f5d5cddd9e2bd6f4886b99ca14f940"
 
-#SRC_URI = "git://github.com/myir-private/myir-st-linux.git;protocol=https;branch=develop-stm32mp-L5.15"
-SRC_URI = "git:///media/system1/home/nene/ST/yt135-duxy/sources/kernel/myir-st-linux;protocol=file;branch=${SRCBRANCH}"
+SRC_URI = "git://github.com/MYiR-Dev/myir-st-linux.git;protocol=https;branch=${SRCBRANCH}"
 SRCREV = "9cec825a70d75e79b7ca295b0931e81dbb441bd7"
-SRCBRANCH = "develop-stm32mp-L5.15"
+SRCBRANCH = "develop-yf13x-L5.15"
 
 
 
@@ -41,8 +40,8 @@ S = "${WORKDIR}/git"
 # ---------------------------------
 BBCLASSEXTEND = "devupstream:target"
 
-SRC_URI:class-devupstream = "git://github.com/myir-private/myir-st-linux.git;protocol=https;branch=develop-stm32mp-L5.15"
-SRCREV:class-devupstream = "0fd58664609501029b23d381f85dd6c9ae3cd9f2"
+SRC_URI:class-devupstream = "git://github.com/MYiR-Dev/myir-st-linux.git;protocol=https;branch=${SRCBRANCH}"
+SRCREV:class-devupstream = "9cec825a70d75e79b7ca295b0931e81dbb441bd7"
 
 # ---------------------------------
 # Configure default preference to manage dynamic selection between tarball and github
