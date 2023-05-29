@@ -3,9 +3,9 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/tf-a-tools:"
 #SRC_URI = "git://github.com/myir-private/myir-st-tfa.git;protocol=https;branch=develop-v2.6-stm32mp"
 #SRCREV = "4cc966a5372b13517343009b2f8797cb99828ce8"
 
-SRC_URI = "git:///media/system1/home/nene/ST/sources/tfa/myir-st-tfa;protocol=file;branch=${SRCBRANCH}"
+SRC_URI = "git://github.com/MYiR-Dev/myir-st-arm-trusted-firmware.git;protocol=https;branch=${SRCBRANCH}"
 SRCREV = "4cc966a5372b13517343009b2f8797cb99828ce8"
-SRCBRANCH = "develop-v2.6-stm32mp"
+SRCBRANCH = "develop-yf13x-v2.6"
 
 DEPENDS += "dtc-native openssl"
 
